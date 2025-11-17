@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MajongGame.Gameplay.Level
 {
-    public class TileSpriteRandomizer : MonoBehaviour
+    public class TileSpriteRandomizer
     {
         public void Randomize(List<Sprite> sprites, List<Tile> tiles)
         {

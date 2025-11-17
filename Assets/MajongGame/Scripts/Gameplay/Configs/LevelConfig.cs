@@ -14,8 +14,6 @@ namespace MajongGame.Gameplay.Configs
         {
             get
             {
-                if (_tilesCount != 0) return _tilesCount;
-
                 int tilesCountFirstLayer = FirstLeayerPattern.Count((char c) => c == 'P');
                 int tilesCountSecondLayer = SecondLeayerPattern.Count((char c) => c == 'P');
                 int tilesCountThirdLayer = ThirdLeayerPattern.Count((char c) => c == 'P');

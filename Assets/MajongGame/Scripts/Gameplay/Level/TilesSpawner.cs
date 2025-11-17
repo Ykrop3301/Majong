@@ -1,17 +1,19 @@
 ﻿using MajongGame.Gameplay.Configs;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 namespace MajongGame.Gameplay.Level
 {
     public class TilesSpawner
     {
-        public List<GameObject> SpawnLevel(LevelConfig levelConfig, GameObject tilePrefab)
+        public List<Tile> SpawnLevel(LevelConfig levelConfig, Tile tilePrefab)
         {
+            if (levelConfig.TilesCount % 3 != 0) 
+                throw new System.Exception($"Кол-во спрайтов должно быть кратно 3. Кол-во: {levelConfig.TilesCount}");
+
             BoxCollider tileColider = tilePrefab.GetComponent<BoxCollider>();
 
-            List<GameObject> newTiles = new List<GameObject>();
+            List<Tile> newTiles = new List<Tile>();
 
             newTiles.AddRange(SpawnTiles(tilePrefab, levelConfig.FirstLeayerPattern, tileColider.size, 0));
             newTiles.AddRange(SpawnTiles(tilePrefab, levelConfig.SecondLeayerPattern, tileColider.size, 1));
@@ -20,10 +22,10 @@ namespace MajongGame.Gameplay.Level
             return newTiles;
         }
 
-        private List<GameObject> SpawnTiles(GameObject tilePrefab, string layerPattern, Vector3 tileSize, int layerNum)
+        private List<Tile> SpawnTiles(Tile tilePrefab, string layerPattern, Vector3 tileSize, int layerNum)
         {
             Transform parent = new GameObject($"Layer {layerNum + 1}").transform;
-            List<GameObject> newTiles = new List<GameObject>();
+            List<Tile> newTiles = new List<Tile>();
 
             Vector2[,] tileMap = GetTileMap(layerPattern, tileSize.z, tileSize.x);
             int tileMapSize = tileMap.GetLength(0);
@@ -37,10 +39,8 @@ namespace MajongGame.Gameplay.Level
                 {
                     Vector3 position = new Vector3(tileMap[collumn, row].x, tileSize.y * layerNum, tileMap[collumn, row].y);
 
-                    GameObject tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
+                    Tile tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
                     tile.transform.SetParent(parent);
-
-                    Debug.Log((tileMap[collumn, row].x, tileMap[collumn, row].y));
 
                     newTiles.Add(tile);
                     collumn++;
@@ -74,7 +74,7 @@ namespace MajongGame.Gameplay.Level
             float x, y;
 
             float startX = (prefabWidth / 2) * -size;
-            float startY = (prefabLength / 2) * size;  
+            float startY = (prefabLength / 2) * size;
 
             int currentXId = 0, currentYId = 0;
 
@@ -92,7 +92,7 @@ namespace MajongGame.Gameplay.Level
                 y = startY - currentYId * prefabLength;
 
                 tileMap[currentXId, currentYId] = new Vector2(x, y);
-                
+
                 currentXId++;
             }
 

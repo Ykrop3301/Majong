@@ -1,0 +1,31 @@
+﻿using System.Linq;
+using UnityEngine;
+
+namespace MajongGame.Gameplay.Configs
+{
+    [CreateAssetMenu]
+    public class LevelConfig : ScriptableObject
+    {
+        [field: SerializeField, TextArea(8, 10)] public string FirstLeayerPattern { get; private set; } = "########\r\n########\r\n########\r\n########\r\n########\r\n########\r\n########\r\n########";
+        [field: SerializeField, TextArea(7, 10)] public string SecondLeayerPattern { get; private set; } = "#######\r\n#######\r\n#######\r\n#######\r\n#######\r\n#######\r\n#######";
+        [field: SerializeField, TextArea(6, 10)] public string ThirdLeayerPattern { get; private set; } = "######\r\n######\r\n######\r\n######\r\n######\r\n######";
+
+        public int TilesCount
+        {
+            get
+            {
+                if (_tilesCount != 0) return _tilesCount;
+
+                int tilesCountFirstLayer = FirstLeayerPattern.Count((char c) => c == 'P');
+                int tilesCountSecondLayer = SecondLeayerPattern.Count((char c) => c == 'P');
+                int tilesCountThirdLayer = ThirdLeayerPattern.Count((char c) => c == 'P');
+
+                _tilesCount = tilesCountFirstLayer + tilesCountSecondLayer + tilesCountThirdLayer;
+                return _tilesCount;
+            }
+        }
+    
+        private int _tilesCount;
+
+    }
+}

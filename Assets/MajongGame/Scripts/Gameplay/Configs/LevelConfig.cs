@@ -6,9 +6,9 @@ namespace MajongGame.Gameplay.Configs
     [CreateAssetMenu]
     public class LevelConfig : ScriptableObject
     {
-        [field: SerializeField, TextArea(8, 10)] public string FirstLeayerPattern { get; private set; } = "########\r\n########\r\n########\r\n########\r\n########\r\n########\r\n########\r\n########";
-        [field: SerializeField, TextArea(7, 10)] public string SecondLeayerPattern { get; private set; } = "#######\r\n#######\r\n#######\r\n#######\r\n#######\r\n#######\r\n#######";
-        [field: SerializeField, TextArea(6, 10)] public string ThirdLeayerPattern { get; private set; } = "######\r\n######\r\n######\r\n######\r\n######\r\n######";
+        [field: SerializeField, TextArea(8, 10)] public string FirstLeayerPattern { get; private set; } = "########\n########\n########\n########\n########\n########\n########\n########";
+        [field: SerializeField, TextArea(7, 10)] public string SecondLeayerPattern { get; private set; } = "#######\n#######\n#######\n#######\n#######\n#######\n#######";
+        [field: SerializeField, TextArea(6, 10)] public string ThirdLeayerPattern { get; private set; } = "######\n######\n######\n######\n######\n######";
 
         public int TilesCount
         {

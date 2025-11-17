@@ -27,7 +27,7 @@ MonoBehaviour:
     P##PP##P
 
     PPPPPPPP'
-  <SecondLeayerPattern>k__BackingField: '###P###
+  <SecondLeayerPattern>k__BackingField: '#######
 
     #PPPPP#
 
@@ -42,7 +42,7 @@ MonoBehaviour:
     PPPPPPP'
   <ThirdLeayerPattern>k__BackingField: '######
 
-    #PPPP#
+    PPPPPP
 
     ##PP##
 
@@ -50,4 +50,4 @@ MonoBehaviour:
 
     ##PP##
 
-    #PPPP#'
+    PPPPPP'

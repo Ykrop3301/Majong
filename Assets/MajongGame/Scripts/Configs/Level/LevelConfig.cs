@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace MajongGame.Gameplay.Configs
+namespace MajongGame.Configs.Level
 {
     [CreateAssetMenu]
     public class LevelConfig : ScriptableObject

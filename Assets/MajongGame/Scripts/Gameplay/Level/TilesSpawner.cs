@@ -1,4 +1,4 @@
-﻿using MajongGame.Gameplay.Configs;
+﻿using MajongGame.Configs.Level;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ namespace MajongGame.Gameplay.Level
 {
     public class TilesSpawner
     {
+        private List<Tile> _spawnedTiles;
         public List<Tile> SpawnLevel(LevelConfig levelConfig, Tile tilePrefab)
         {
             if (levelConfig.TilesCount % 3 != 0) 
@@ -14,6 +15,15 @@ namespace MajongGame.Gameplay.Level
             BoxCollider tileColider = tilePrefab.GetComponent<BoxCollider>();
 
             List<Tile> newTiles = new List<Tile>();
+
+            if (_spawnedTiles != null)
+            {
+                foreach (var tile in _spawnedTiles)
+                {
+                    GameObject.Destroy(tile.gameObject);
+                }
+            }
+            else _spawnedTiles = new List<Tile>();
 
             newTiles.AddRange(SpawnTiles(tilePrefab, levelConfig.FirstLeayerPattern, tileColider.size, 0));
             newTiles.AddRange(SpawnTiles(tilePrefab, levelConfig.SecondLeayerPattern, tileColider.size, 1));
@@ -25,6 +35,7 @@ namespace MajongGame.Gameplay.Level
         private List<Tile> SpawnTiles(Tile tilePrefab, string layerPattern, Vector3 tileSize, int layerNum)
         {
             Transform parent = new GameObject($"Layer {layerNum + 1}").transform;
+
             List<Tile> newTiles = new List<Tile>();
 
             Vector2[,] tileMap = GetTileMap(layerPattern, tileSize.z, tileSize.x);
@@ -55,6 +66,8 @@ namespace MajongGame.Gameplay.Level
                     collumn = 0;
                 }
             }
+
+            _spawnedTiles.AddRange(newTiles);
 
             return newTiles;
         }

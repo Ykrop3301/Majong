@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e434a1c2c4eb8a429402b853c29e3da, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cb96f63b04d22b4a81339d7c72b60a3, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
   <FirstLeayerPattern>k__BackingField: '###PP###
 
-    ###PP###
+    #PPPPPP#
 
     ###PP###
 
@@ -27,9 +27,7 @@ MonoBehaviour:
     P##PP##P
 
     PPPPPPPP'
-  <SecondLeayerPattern>k__BackingField: '###P###
-
-    #PPPPP#
+  <SecondLeayerPattern>k__BackingField: '#######
 
     ###P###
 
@@ -37,17 +35,19 @@ MonoBehaviour:
 
     ###P###
 
-    P##P##P
+    ###P###
+
+    ###P###
 
     PPPPPPP'
   <ThirdLeayerPattern>k__BackingField: '######
 
-    PPPPPP
+    #PPPP#
 
     ##PP##
 
     ##PP##
 
-    ##PP##
+    P#PP#P
 
     PPPPPP'

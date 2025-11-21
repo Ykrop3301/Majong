@@ -86,8 +86,8 @@ namespace MajongGame.Gameplay.Level
 
             float x, y;
 
-            float startX = (prefabWidth / 2) * -size;
-            float startY = (prefabLength / 2) * size;
+            float startX = (prefabWidth / 2) * (-size + 1);
+            float startY = (prefabLength / 2) * (size - 1);
 
             int currentXId = 0, currentYId = 0;
 

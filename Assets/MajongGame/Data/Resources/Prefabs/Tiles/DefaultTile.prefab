@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6644773853398878829}
+  Transform: {fileID: 9046006433141786426}
 --- !u!1 &773205972827542011
 GameObject:
   m_ObjectHideFlags: 0

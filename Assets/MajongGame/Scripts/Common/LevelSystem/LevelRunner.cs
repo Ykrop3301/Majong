@@ -1,4 +1,5 @@
-﻿using MajongGame.Configs.Level;
+﻿using MajongGame.Common.PopupSystem;
+using MajongGame.Configs.Level;
 using MajongGame.Gameplay;
 using MajongGame.Gameplay.Level;
 using MajongGame.LevelSystem;
@@ -15,11 +16,13 @@ namespace MajongGame.Common.LevelSystem
         private readonly CoroutineRunner _coroutineRunner;
         private readonly TilesSpawner _tilesSpawner;
         private readonly TileSpriteRandomizer _spriteRandomizer;
+        private readonly PopupsHolder _popupsHolder;
 
         public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController)
         {
             _coroutineRunner = coroutineRunner;
             _levelsController = levelsController;
+
             _spriteRandomizer = new TileSpriteRandomizer();
             _tilesSpawner = new TilesSpawner();
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MajongGame.Common;
+using UnityEngine;
 
 namespace MajongGame.Gameplay
 {
@@ -8,7 +9,7 @@ namespace MajongGame.Gameplay
 
         private void Update()
         {
-            if (_tilesHolder == null) 
+            if (_tilesHolder == null || !GlobalVariablesController.CanClickOnTiles) 
                 return;
 
             if (Input.GetMouseButtonDown(0))

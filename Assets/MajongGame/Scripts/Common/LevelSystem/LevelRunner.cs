@@ -11,15 +11,17 @@ namespace MajongGame.Common.LevelSystem
 {
     public class LevelRunner
     {
-        private readonly CoroutineRunner _coroutineRunner;
         private readonly ILevelsController _levelsController;
-
-        TilesSpawner _tilesSpawner = new TilesSpawner();
+        private readonly CoroutineRunner _coroutineRunner;
+        private readonly TilesSpawner _tilesSpawner;
+        private readonly TileSpriteRandomizer _spriteRandomizer;
 
         public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController)
         {
             _coroutineRunner = coroutineRunner;
             _levelsController = levelsController;
+            _spriteRandomizer = new TileSpriteRandomizer();
+            _tilesSpawner = new TilesSpawner();
         }
 
         public void RunLevel(LevelLocationConfig location, int id)
@@ -49,9 +51,7 @@ namespace MajongGame.Common.LevelSystem
 
             List<Tile> tiles = _tilesSpawner.SpawnLevel(levelConfig, tilePrefab);
 
-            TileSpriteRandomizer spriteRandomizer = new TileSpriteRandomizer();
-
-            spriteRandomizer.Randomize(_levelsController.CurrentLevel.location.TilePictures, tiles);
+            _spriteRandomizer.Randomize(_levelsController.CurrentLevel.location.TilePictures, tiles);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace MajongGame.Gameplay
 
         private BoxCollider _boxCollider;
         private Dictionary<Vector3, Tile> _tilesPoints = new Dictionary<Vector3, Tile>();
-        private int _freePointsCount;
+        public int FreePointsCount { get; private set; }
         private Vector3 _tileSize;
         private bool _inCoroutine = false;
 
@@ -42,12 +43,12 @@ namespace MajongGame.Gameplay
                 _tilesPoints.Add(position, null);
             }
 
-            _freePointsCount = _tilesCount;
+            FreePointsCount = _tilesCount;
         }
 
         public bool TryAddTile(Tile tile)
         {
-            if (_freePointsCount > 0)
+            if (FreePointsCount > 0)
             {
                 List<Vector3> sameTiles = _tilesPoints
                     .Where(x => x.Value != null && x.Value.Sprite == tile.Sprite)
@@ -79,7 +80,7 @@ namespace MajongGame.Gameplay
                 if (!_tilesPoints.ContainsKey(newPoint))
                     throw new System.Exception("Error in calculating a new point");
 
-                _freePointsCount--;
+                FreePointsCount--;
                 MoveTile(tile, newPoint);
 
                 return true;
@@ -114,6 +115,15 @@ namespace MajongGame.Gameplay
             _inCoroutine = false;
 
             CheckThreeTiles();
+            CheckEndGame();
+        }
+
+        private void CheckEndGame()
+        {
+            if (FreePointsCount == 0)
+            {
+                Debug.Log("You lose!");
+            }
         }
 
         private void CheckThreeTiles()
@@ -151,7 +161,7 @@ namespace MajongGame.Gameplay
 
                 tile.DOKill();
                 Destroy(tile.gameObject);
-                _freePointsCount++;
+                FreePointsCount++;
             }
 
             FillEmptyPoints(righterPoint);

@@ -77,6 +77,7 @@ namespace MajongGame.Common.LevelSystem
                 int nextLocationId = _locations.IndexOf(CurrentLevel.location);
 
                 unlockedLocations += $", {_locations[nextLocationId].Name}";
+                PlayerPrefs.SetString("UnlockedLocations", unlockedLocations);
             }
         }
 

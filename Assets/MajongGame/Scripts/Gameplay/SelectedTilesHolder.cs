@@ -29,7 +29,6 @@ namespace MajongGame.Gameplay
             _popupsHolder = popupsHolder;
         }
 
-
         private void Start()
         {
             _boxCollider = GetComponent<BoxCollider>();
@@ -134,6 +133,7 @@ namespace MajongGame.Gameplay
             if (FreePointsCount == 0)
             {
                 LosePopup popup = _popupsHolder.GetPopup<LosePopup>();
+                FreePointsCount = _tilesCount;
                 popup.Show();
             }
         }

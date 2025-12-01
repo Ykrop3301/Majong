@@ -21,6 +21,22 @@ namespace MajongGame.Common.PopupSystem
             _transform.DOScale(1f, ANIMATION_DURATION).From(0f);
         }
 
+        public virtual void Hide(System.Action actionAfterHide)
+        {
+            if (!GlobalVariablesController.InPopup)
+                return;
+
+            _transform.DOScale(0f, ANIMATION_DURATION)
+                .From(1f)
+                .OnComplete(() =>
+                {
+                    GlobalVariablesController.CanClickOnTiles = true;
+                    GlobalVariablesController.InPopup = false;
+                    gameObject.SetActive(false);
+                    actionAfterHide();
+                });
+        }
+
         public virtual void Hide()
         {
             if (!GlobalVariablesController.InPopup)
@@ -28,10 +44,12 @@ namespace MajongGame.Common.PopupSystem
 
             _transform.DOScale(0f, ANIMATION_DURATION)
                 .From(1f)
-                .OnComplete(() => gameObject.SetActive(false));
-
-            GlobalVariablesController.CanClickOnTiles = true;
-            GlobalVariablesController.InPopup = false;
+                .OnComplete(() =>
+                {
+                    GlobalVariablesController.CanClickOnTiles = true;
+                    GlobalVariablesController.InPopup = false;
+                    gameObject.SetActive(false);
+                });
         }
     }
 }

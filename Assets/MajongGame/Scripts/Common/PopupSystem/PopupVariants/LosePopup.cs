@@ -16,7 +16,7 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
 
         public void ReplayLevel()
         {
-            _levelsController.PlayCurrentLevel();
+            Hide(() => _levelsController.PlayCurrentLevel());
         }
 
         public void GoToMainMenu()

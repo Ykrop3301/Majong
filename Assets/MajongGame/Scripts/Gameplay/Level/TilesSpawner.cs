@@ -1,4 +1,5 @@
-﻿using MajongGame.Configs.Level;
+﻿using DG.Tweening;
+using MajongGame.Configs.Level;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,8 +21,14 @@ namespace MajongGame.Gameplay.Level
             {
                 foreach (var tile in _spawnedTiles)
                 {
-                    GameObject.Destroy(tile.gameObject);
+                    if (tile != null && tile.gameObject != null)
+                    {
+                        tile.DOKill();
+                        GameObject.Destroy(tile.gameObject);
+                    }
                 }
+
+                _spawnedTiles.Clear();
             }
             else _spawnedTiles = new List<Tile>();
 

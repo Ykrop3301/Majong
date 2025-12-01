@@ -2,7 +2,6 @@
 using MajongGame.Configs.Level;
 using MajongGame.Gameplay;
 using MajongGame.Gameplay.Level;
-using MajongGame.LevelSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +15,16 @@ namespace MajongGame.Common.LevelSystem
         private readonly CoroutineRunner _coroutineRunner;
         private readonly TilesSpawner _tilesSpawner;
         private readonly TileSpriteRandomizer _spriteRandomizer;
-        private readonly PopupsHolder _popupsHolder;
+        private readonly UnselectedTilesHolder _unselectedTilesHolder;
 
-        public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController)
+        public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController, PopupsHolder popupsHolder)
         {
             _coroutineRunner = coroutineRunner;
             _levelsController = levelsController;
 
             _spriteRandomizer = new TileSpriteRandomizer();
             _tilesSpawner = new TilesSpawner();
+            _unselectedTilesHolder = new UnselectedTilesHolder(popupsHolder, levelsController);
         }
 
         public void RunLevel(LevelLocationConfig location, int id)
@@ -47,12 +47,12 @@ namespace MajongGame.Common.LevelSystem
         {
             LevelConfig levelConfig = _levelsController.CurrentLevel.location.GetLevel(_levelsController.CurrentLevel.levelId);
 
-            if (!PlayerPrefs.HasKey("TilePrefabName"))
-                PlayerPrefs.SetString("TilePrefabName", "DefaultTile");
+            
 
             Tile tilePrefab = Resources.Load<Tile>($"Prefabs/Tiles/{PlayerPrefs.GetString("TilePrefabName")}");
 
             List<Tile> tiles = _tilesSpawner.SpawnLevel(levelConfig, tilePrefab);
+            _unselectedTilesHolder.SetTiles(tiles);
 
             _spriteRandomizer.Randomize(_levelsController.CurrentLevel.location.TilePictures, tiles);
         }

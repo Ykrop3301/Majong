@@ -1,6 +1,6 @@
 ﻿using MajongGame.Configs.Level;
 
-namespace MajongGame.LevelSystem
+namespace MajongGame.Common.LevelSystem
 {
     public interface ILevelsController
     {

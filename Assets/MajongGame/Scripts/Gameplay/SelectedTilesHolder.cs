@@ -172,7 +172,7 @@ namespace MajongGame.Gameplay
                 _tilesPoints[tile.Transform.position] = null;
 
                 tile.DOKill();
-                Destroy(tile.gameObject);
+                tile.Die();
                 FreePointsCount++;
             }
 

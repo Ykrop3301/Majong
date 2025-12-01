@@ -7,6 +7,8 @@ namespace MajongGame.Gameplay
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [field: SerializeField] public Transform Transform;
 
+        public event System.Action<Tile> Died;
+
         public Sprite Sprite { get; private set; }
         public bool IsTaked { get; private set; } = false;
 
@@ -19,6 +21,12 @@ namespace MajongGame.Gameplay
         {
             _spriteRenderer.sprite = sprite;
             Sprite = sprite;
+        }
+
+        public void Die()
+        {
+            Died?.Invoke(this);
+            Destroy(gameObject);
         }
     }
 }

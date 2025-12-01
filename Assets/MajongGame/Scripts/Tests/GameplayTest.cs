@@ -3,7 +3,6 @@ using MajongGame.Common.LevelSystem;
 using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
 using MajongGame.Configs.Level;
-using MajongGame.LevelSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

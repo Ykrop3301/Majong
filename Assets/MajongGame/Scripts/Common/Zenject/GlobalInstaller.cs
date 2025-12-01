@@ -1,7 +1,6 @@
 ﻿using MajongGame.Common.LevelSystem;
 using MajongGame.Common.PopupSystem;
 using MajongGame.Configs.Level;
-using MajongGame.LevelSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -23,7 +22,7 @@ namespace MajongGame.Common.Zenject
 
         private void BindLevelsController()
         {
-            LevelsController levelsController = new LevelsController(_locations, _coroutineRunner);
+            LevelsController levelsController = new LevelsController(_locations, _coroutineRunner, _popupsHolder);
             Container.Bind<ILevelsController>().FromInstance(levelsController).AsSingle();
         }
     }

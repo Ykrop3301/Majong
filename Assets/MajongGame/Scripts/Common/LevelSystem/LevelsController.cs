@@ -1,5 +1,5 @@
-﻿using MajongGame.Configs.Level;
-using MajongGame.LevelSystem;
+﻿using MajongGame.Common.PopupSystem;
+using MajongGame.Configs.Level;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace MajongGame.Common.LevelSystem
 
         public (LevelLocationConfig location, int levelId) CurrentLevel { get; private set; }
 
-        public LevelsController(List<LevelLocationConfig> locations, CoroutineRunner coroutineRunner)
+        public LevelsController(List<LevelLocationConfig> locations, CoroutineRunner coroutineRunner, PopupsHolder popupsHolder)
         {
             _locations = locations;
 
@@ -26,7 +26,7 @@ namespace MajongGame.Common.LevelSystem
             string lastLocation = PlayerPrefs.GetString("UnlockedLocations").Split(',').Last();
             CurrentLevel = (GetLocation(lastLocation), PlayerPrefs.GetInt("UnlockedLevelsCount" + lastLocation) - 1);
 
-            _levelRunner = new LevelRunner(coroutineRunner, this);
+            _levelRunner = new LevelRunner(coroutineRunner, this, popupsHolder);
         }
 
         public LevelLocationConfig GetLocation(string locationName)
@@ -57,7 +57,7 @@ namespace MajongGame.Common.LevelSystem
 
         public void PlayNextLevel()
         {
-            if (CurrentLevel.location.LevelsCount >= CurrentLevel.levelId + 1)
+            if (CurrentLevel.levelId + 1 >= CurrentLevel.location.LevelsCount)
                 throw new System.Exception("Invalid level id.");
 
             PlayLevel(CurrentLevel.location.Name, CurrentLevel.levelId + 1);
@@ -65,7 +65,7 @@ namespace MajongGame.Common.LevelSystem
 
         public void UnlockNextLevel()
         {
-            if (CurrentLevel.location.LevelsCount < CurrentLevel.levelId + 1)
+            if (CurrentLevel.levelId + 1 < CurrentLevel.location.LevelsCount)
             {
                 int unlockedLevelsCount = PlayerPrefs.GetInt("UnlockedLevelsCount" + CurrentLevel.location.Name);
 
@@ -74,7 +74,9 @@ namespace MajongGame.Common.LevelSystem
             else
             {
                 string unlockedLocations = PlayerPrefs.GetString("UnlockedLocations");
-                int nextLocationId = _locations.IndexOf(CurrentLevel.location);
+                int nextLocationId = _locations.IndexOf(CurrentLevel.location) + 1;
+                if (_locations.Count <= nextLocationId)
+                    return;
 
                 unlockedLocations += $", {_locations[nextLocationId].Name}";
                 PlayerPrefs.SetString("UnlockedLocations", unlockedLocations);

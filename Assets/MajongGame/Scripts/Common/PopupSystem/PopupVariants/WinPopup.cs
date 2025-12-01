@@ -1,4 +1,4 @@
-﻿using MajongGame.LevelSystem;
+﻿using MajongGame.Common.LevelSystem;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +16,7 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
 
         public void NextLevel()
         {
-            _levelsController.PlayNextLevel();
+            Hide(() => _levelsController.PlayNextLevel());
         }
 
         public void GoToMainMenu()

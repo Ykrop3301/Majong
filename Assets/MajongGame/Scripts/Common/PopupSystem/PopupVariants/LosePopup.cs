@@ -1,4 +1,4 @@
-﻿using MajongGame.LevelSystem;
+﻿using MajongGame.Common.LevelSystem;
 using UnityEngine;
 using Zenject;
 

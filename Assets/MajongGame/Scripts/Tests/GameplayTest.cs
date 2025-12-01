@@ -8,16 +8,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace MajongGame.Tests
 {
     public class GameplayTest : MonoBehaviour
     {
-        [SerializeField] private List<LevelLocationConfig> _locations;
-        [SerializeField] private CoroutineRunner _coroutineRunner;
-        [SerializeField] private PopupsHolder _popupHolder;
-        
-        private ILevelsController _levelsController;
+        [Inject] private PopupsHolder _popupsHolder;
+        [Inject] private ILevelsController _levelsController;
 
         private void Awake()
         {
@@ -26,19 +24,13 @@ namespace MajongGame.Tests
 
         private void Start()
         {
-            _levelsController = new LevelsController(_locations, _coroutineRunner);
             _levelsController.PlayCurrentLevel();
-
-            StartCoroutine(WaitGameplaySceneCoroutine());
+            //StartCoroutine(WaitGameplaySceneCoroutine());
         }
 
         private IEnumerator WaitGameplaySceneCoroutine()
         {
             yield return new WaitUntil(() =>SceneManager.GetActiveScene().name == "GameplayScene");
-
-            InformationPopup popup = _popupHolder.GetPopup<InformationPopup>();
-            popup.SetInfo("Test", "Test");
-            popup.Show();
         }
     }
 }

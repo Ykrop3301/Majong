@@ -1,9 +1,12 @@
 ﻿using DG.Tweening;
+using MajongGame.Common.PopupSystem;
+using MajongGame.Common.PopupSystem.PopupVariants;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace MajongGame.Gameplay
 {
@@ -18,6 +21,14 @@ namespace MajongGame.Gameplay
         public int FreePointsCount { get; private set; }
         private Vector3 _tileSize;
         private bool _inCoroutine = false;
+        private PopupsHolder _popupsHolder;
+
+        [Inject]
+        private void Construct(PopupsHolder popupsHolder)
+        {
+            _popupsHolder = popupsHolder;
+        }
+
 
         private void Start()
         {
@@ -122,7 +133,8 @@ namespace MajongGame.Gameplay
         {
             if (FreePointsCount == 0)
             {
-                Debug.Log("You lose!");
+                LosePopup popup = _popupsHolder.GetPopup<LosePopup>();
+                popup.Show();
             }
         }
 

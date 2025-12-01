@@ -1,5 +1,4 @@
-﻿using MajongGame.Common.PopupSystem;
-using MajongGame.Configs.Level;
+﻿using MajongGame.Configs.Level;
 using MajongGame.LevelSystem;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace MajongGame.Common.PopupSystem
 {
@@ -8,9 +9,6 @@ namespace MajongGame.Common.PopupSystem
     {
         [SerializeField] private List<Popup> _popupVariants;
         private Dictionary<System.Type, Popup> _popups = new Dictionary<System.Type, Popup>();
-
-        private void Awake() =>
-            DontDestroyOnLoad(this);
 
         public T GetPopup<T>() where T : Popup
         {
@@ -27,7 +25,8 @@ namespace MajongGame.Common.PopupSystem
             }
 
             T popupPrefab = _popupVariants.Where(x => x.GetType() == typeof(T)).First() as T;
-            T newPopup = Instantiate(popupPrefab);
+            T newPopup = ProjectContext.Instance.Container.InstantiatePrefabForComponent<T>(popupPrefab);
+
             newPopup.gameObject.SetActive(false);
             _popups.Add(typeof(T), newPopup);
 

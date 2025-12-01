@@ -6,18 +6,10 @@ namespace MajongGame.Common
 {
     public class GamePrepareController : MonoBehaviour
     {
-        private SceneChanger _sceneChanger;
-
-        [Inject]
-        private void Construct(SceneChanger sceneChanger)
-        {
-            _sceneChanger = sceneChanger;
-        }
-
         private void Start()
         {
             Prepare();
-            _sceneChanger.LoadScene("MenuScene");
+            SceneManager.LoadScene("MenuScene");
         }
 
         private void Prepare()

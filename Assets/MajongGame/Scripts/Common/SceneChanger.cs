@@ -23,6 +23,7 @@ namespace MajongGame.Common
 
         private IEnumerator LoadSceneCoroutine(string sceneName)
         {
+            GlobalVariablesController.CanClickOnTiles = false;
             _blackout.gameObject.SetActive(true);
             yield return _blackout.DOFade(1f, _bloackoutDuration).From(0f).WaitForCompletion();
 
@@ -32,6 +33,7 @@ namespace MajongGame.Common
 
             yield return _blackout.DOFade(0f, _bloackoutDuration).From(1f).WaitForCompletion();
             _blackout.gameObject.SetActive(false);
+            GlobalVariablesController.CanClickOnTiles = true;
         }
     }
 }

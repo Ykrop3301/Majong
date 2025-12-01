@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace MajongGame.Common
 {
     public class GamePrepareController : MonoBehaviour
     {
-        private void Awake()
+        private SceneChanger _sceneChanger;
+
+        [Inject]
+        private void Construct(SceneChanger sceneChanger)
+        {
+            _sceneChanger = sceneChanger;
+        }
+
+        private void Start()
         {
             Prepare();
-            SceneManager.LoadScene("MenuScene");
+            _sceneChanger.LoadScene("MenuScene");
         }
 
         private void Prepare()

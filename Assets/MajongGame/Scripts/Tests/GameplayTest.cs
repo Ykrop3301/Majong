@@ -13,7 +13,6 @@ namespace MajongGame.Tests
 {
     public class GameplayTest : MonoBehaviour
     {
-        [Inject] private PopupsHolder _popupsHolder;
         [Inject] private ILevelsController _levelsController;
 
         private void Awake()

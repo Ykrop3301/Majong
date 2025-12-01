@@ -16,8 +16,9 @@ namespace MajongGame.Common.LevelSystem
         private readonly TilesSpawner _tilesSpawner;
         private readonly TileSpriteRandomizer _spriteRandomizer;
         private readonly UnselectedTilesHolder _unselectedTilesHolder;
+        private readonly SceneChanger _sceneChanger;
 
-        public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController, PopupsHolder popupsHolder)
+        public LevelRunner(CoroutineRunner coroutineRunner, ILevelsController levelsController, PopupsHolder popupsHolder, SceneChanger sceneChanger)
         {
             _coroutineRunner = coroutineRunner;
             _levelsController = levelsController;
@@ -25,13 +26,14 @@ namespace MajongGame.Common.LevelSystem
             _spriteRandomizer = new TileSpriteRandomizer();
             _tilesSpawner = new TilesSpawner();
             _unselectedTilesHolder = new UnselectedTilesHolder(popupsHolder, levelsController);
+            _sceneChanger = sceneChanger;
         }
 
         public void RunLevel(LevelLocationConfig location, int id)
         {
             if (SceneManager.GetActiveScene().name != "GameplayScene")
             {
-                SceneManager.LoadScene("GameplayScene");
+                _sceneChanger.LoadScene("GameplayScene");
                 _coroutineRunner.StartCoroutine(WaitLoadSceneCoroutine());
             }
             else PrepareGame();

@@ -1,5 +1,4 @@
 ﻿using MajongGame.Common.LevelSystem;
-using UnityEngine;
 using Zenject;
 
 namespace MajongGame.Common.PopupSystem.PopupVariants
@@ -7,11 +6,13 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
     public class WinPopup : Popup
     {
         private ILevelsController _levelsController;
+        private SceneChanger _sceneChanger;
 
         [Inject]
-        private void Construct(ILevelsController levelsController)
+        private void Construct(ILevelsController levelsController, SceneChanger sceneChanger)
         {
             _levelsController = levelsController;
+            _sceneChanger = sceneChanger;
         }
 
         public void NextLevel()
@@ -21,7 +22,7 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
 
         public void GoToMainMenu()
         {
-            Debug.Log("Later.");
+            Hide(() => _sceneChanger.LoadScene("MenuScene"));
         }
     }
 }

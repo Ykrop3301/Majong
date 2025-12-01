@@ -13,7 +13,7 @@ namespace MajongGame.Common.LevelSystem
 
         public (LevelLocationConfig location, int levelId) CurrentLevel { get; private set; }
 
-        public LevelsController(List<LevelLocationConfig> locations, CoroutineRunner coroutineRunner, PopupsHolder popupsHolder)
+        public LevelsController(List<LevelLocationConfig> locations, CoroutineRunner coroutineRunner, PopupsHolder popupsHolder, SceneChanger sceneChanger)
         {
             _locations = locations;
 
@@ -26,7 +26,7 @@ namespace MajongGame.Common.LevelSystem
             string lastLocation = PlayerPrefs.GetString("UnlockedLocations").Split(',').Last();
             CurrentLevel = (GetLocation(lastLocation), PlayerPrefs.GetInt("UnlockedLevelsCount" + lastLocation) - 1);
 
-            _levelRunner = new LevelRunner(coroutineRunner, this, popupsHolder);
+            _levelRunner = new LevelRunner(coroutineRunner, this, popupsHolder, sceneChanger);
         }
 
         public LevelLocationConfig GetLocation(string locationName)

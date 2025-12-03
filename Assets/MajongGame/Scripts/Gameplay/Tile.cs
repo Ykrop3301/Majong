@@ -12,6 +12,8 @@ namespace MajongGame.Gameplay
         public Sprite Sprite { get; private set; }
         public bool IsTaked { get; private set; } = false;
 
+        public TileAnimator Animator { get; private set; }
+
         public void SetTaked()
         {
             IsTaked = true;
@@ -27,6 +29,14 @@ namespace MajongGame.Gameplay
         {
             Died?.Invoke(this);
             Destroy(gameObject);
+        }
+
+        private void OnEnable()
+        {
+            if (Animator == null)
+                Animator = new TileAnimator(Transform);
+
+            StartCoroutine(Animator.ShowTile());
         }
     }
 }

@@ -14,7 +14,6 @@ namespace MajongGame.Common.PopupSystem
             if (GlobalVariablesController.InPopup)
                 return;
 
-            GlobalVariablesController.CanClickOnTiles = false;
             GlobalVariablesController.InPopup = true;
 
             gameObject.SetActive(true);
@@ -30,7 +29,6 @@ namespace MajongGame.Common.PopupSystem
                 .From(1f)
                 .OnComplete(() =>
                 {
-                    GlobalVariablesController.CanClickOnTiles = true;
                     GlobalVariablesController.InPopup = false;
                     gameObject.SetActive(false);
                     actionAfterHide();
@@ -46,7 +44,6 @@ namespace MajongGame.Common.PopupSystem
                 .From(1f)
                 .OnComplete(() =>
                 {
-                    GlobalVariablesController.CanClickOnTiles = true;
                     GlobalVariablesController.InPopup = false;
                     gameObject.SetActive(false);
                 });

@@ -4,6 +4,7 @@ using MajongGame.Gameplay;
 using MajongGame.Gameplay.Level;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,16 +48,29 @@ namespace MajongGame.Common.LevelSystem
 
         private void PrepareGame()
         {
+            GlobalVariablesController.OnLevelPreparing = true;
+
             LevelConfig levelConfig = _levelsController.CurrentLevel.location.GetLevel(_levelsController.CurrentLevel.levelId);
-
-            
-
             Tile tilePrefab = Resources.Load<Tile>($"Prefabs/Tiles/{PlayerPrefs.GetString("TilePrefabName")}");
 
             List<Tile> tiles = _tilesSpawner.SpawnLevel(levelConfig, tilePrefab);
             _unselectedTilesHolder.SetTiles(tiles);
 
             _spriteRandomizer.Randomize(_levelsController.CurrentLevel.location.TilePictures, tiles);
+
+            _coroutineRunner.StartCoroutine(SmoothShowTilesCoroutine(tiles));
+        }
+
+        private IEnumerator SmoothShowTilesCoroutine(List<Tile> tiles)
+        {
+            foreach (Tile tile in tiles)
+            {
+                tile.gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.02f);
+            }
+
+            yield return new WaitForSeconds(2 * tiles.Last().Animator.AnimationDuration);
+            GlobalVariablesController.OnLevelPreparing = false;
         }
     }
 }

@@ -9,8 +9,13 @@ namespace MajongGame.Gameplay
 
         private void Update()
         {
-            if (_tilesHolder == null || !GlobalVariablesController.CanClickOnTiles) 
+            if (_tilesHolder == null
+                || GlobalVariablesController.OnLevelPreparing
+                || GlobalVariablesController.OnLoadingScene
+                || GlobalVariablesController.InPopup
+                ) 
                 return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

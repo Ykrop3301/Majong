@@ -62,6 +62,8 @@ namespace MajongGame.Gameplay.Level
 
                     newTiles.Add(tile);
                     collumn++;
+
+                    tile.gameObject.SetActive(false);
                 }
                 else if (c == '#')
                 {

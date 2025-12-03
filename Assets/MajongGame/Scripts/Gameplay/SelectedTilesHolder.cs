@@ -188,8 +188,6 @@ namespace MajongGame.Gameplay
                 FreePointsCount++;
                 yield return new WaitForSeconds(0.1f);
             }
-
-            ///yield return new WaitUntil(() => tiles.Count == 0 || tiles.Where(x => x == null || x.gameObject == null).ToList().Count == 3);
             FillEmptyPoints(righterPoint);
         }
 

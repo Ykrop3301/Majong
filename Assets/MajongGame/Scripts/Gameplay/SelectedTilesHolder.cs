@@ -58,7 +58,7 @@ namespace MajongGame.Gameplay
 
         public bool TryAddTile(Tile tile)
         {
-            if (FreePointsCount > 0)
+            if (FreePointsCount > 0 & tile.IsActive)
             {
                 List<Vector3> sameTiles = _tilesPoints
                     .Where(x => x.Value != null && x.Value.Sprite == tile.Sprite)
@@ -95,7 +95,15 @@ namespace MajongGame.Gameplay
 
                 return true;
             }
-            else return false;
+            else
+            {
+                if (!tile.IsActive)
+                {
+                    StartCoroutine(tile.Animator.CantTouch());
+                }
+
+                return false;
+            }
         }
 
         private void MoveTile(Tile tile, Vector3 point)
@@ -121,7 +129,7 @@ namespace MajongGame.Gameplay
 
         private IEnumerator WaitAndCheckEmptyPointsCoroutine()
         {
-            yield return new WaitForSeconds(_tileMovingDuration * 1.5f);
+            yield return new WaitForSeconds(_tileMovingDuration * 1.1f);
             _inCoroutine = false;
 
             CheckThreeTiles();
@@ -152,7 +160,7 @@ namespace MajongGame.Gameplay
 
                     if (sameTiles.Count == 3)
                     {
-                        KillTiles(sameTiles);
+                        StartCoroutine(KillTiles(sameTiles));
                         return;
                     }
                 }
@@ -164,7 +172,7 @@ namespace MajongGame.Gameplay
             }
         }
 
-        private void KillTiles(List<Tile> tiles)
+        private IEnumerator KillTiles(List<Tile> tiles)
         {
             Vector3 righterPoint = tiles.Last().Transform.position;
             foreach (Tile tile in tiles)
@@ -174,8 +182,10 @@ namespace MajongGame.Gameplay
                 tile.DOKill();
                 tile.Die();
                 FreePointsCount++;
+                yield return new WaitForSeconds(0.1f);
             }
 
+            yield return new WaitUntil(() => tiles.Count == 0 || tiles.Where(x => x == null || x.gameObject == null).ToList().Count == 3);
             FillEmptyPoints(righterPoint);
         }
 

@@ -69,8 +69,18 @@ namespace MajongGame.Common.LevelSystem
                 yield return new WaitForSeconds(0.02f);
             }
 
-            yield return new WaitForSeconds(2 * tiles.Last().Animator.AnimationDuration);
+            yield return new WaitForSeconds(tiles.Last().Animator.AnimationDuration);
+
             GlobalVariablesController.OnLevelPreparing = false;
+            CheckTilesActivity(tiles);
+        }
+
+        private void CheckTilesActivity(List<Tile> tiles)
+        {
+            foreach (Tile tile in tiles)
+            {
+                tile.CheckActive();
+            }
         }
     }
 }

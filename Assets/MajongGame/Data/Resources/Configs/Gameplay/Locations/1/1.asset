@@ -24,13 +24,6 @@ MonoBehaviour:
   - {fileID: -1166507027, guid: a9ef144620789a64f968300adfda8364, type: 3}
   - {fileID: 1510858297, guid: a9ef144620789a64f968300adfda8364, type: 3}
   - {fileID: 2067893, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: 1328024678, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: 1733780971, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: 1376921553, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: 1430098852, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: 916282284, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: -1339069501, guid: a9ef144620789a64f968300adfda8364, type: 3}
-  - {fileID: -1545154774, guid: a9ef144620789a64f968300adfda8364, type: 3}
   _levels:
   - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
   - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}

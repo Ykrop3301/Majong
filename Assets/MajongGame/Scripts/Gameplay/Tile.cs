@@ -47,7 +47,7 @@ namespace MajongGame.Gameplay
             Vector3 center = transform.TransformPoint(boxCollider.center);
             Vector3 boxCenter = center + Vector3.up * (boxCollider.size.y / 2);
 
-            List<Tile> hits = Physics.OverlapBox(boxCenter, boxCollider.size / 2.1f)
+            List<Tile> hits = Physics.OverlapBox(boxCenter, boxCollider.size / 2.25f)
                 .Where(x => x.TryGetComponent(out Tile tile) && tile != this)
                 .Select(x => x.GetComponent<Tile>())
                 .ToList();

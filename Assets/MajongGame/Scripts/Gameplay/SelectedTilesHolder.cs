@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using MajongGame.Common;
 using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
 using System;
@@ -108,6 +109,8 @@ namespace MajongGame.Gameplay
 
         private void MoveTile(Tile tile, Vector3 point)
         {
+            GlobalVariablesController.CanClickTiles = false;
+
             if (!_tilesPoints.ContainsKey(point))
                 throw new System.Exception("Point not contains.");
 
@@ -129,7 +132,7 @@ namespace MajongGame.Gameplay
 
         private IEnumerator WaitAndCheckEmptyPointsCoroutine()
         {
-            yield return new WaitForSeconds(_tileMovingDuration * 1.1f);
+            yield return new WaitForSeconds(_tileMovingDuration);
             _inCoroutine = false;
 
             CheckThreeTiles();
@@ -170,6 +173,7 @@ namespace MajongGame.Gameplay
                     sameTiles.Add(tile);
                 }
             }
+            GlobalVariablesController.CanClickTiles = true;
         }
 
         private IEnumerator KillTiles(List<Tile> tiles)
@@ -185,7 +189,7 @@ namespace MajongGame.Gameplay
                 yield return new WaitForSeconds(0.1f);
             }
 
-            yield return new WaitUntil(() => tiles.Count == 0 || tiles.Where(x => x == null || x.gameObject == null).ToList().Count == 3);
+            ///yield return new WaitUntil(() => tiles.Count == 0 || tiles.Where(x => x == null || x.gameObject == null).ToList().Count == 3);
             FillEmptyPoints(righterPoint);
         }
 
@@ -207,6 +211,8 @@ namespace MajongGame.Gameplay
                 _tilesPoints[pointToMove] = pair.Value;
                 pair.Value.Transform.DOMove(pointToMove, _tileMovingDuration);
             }
+
+            GlobalVariablesController.CanClickTiles = true;
         }
     }
 }

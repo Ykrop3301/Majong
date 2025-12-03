@@ -10,6 +10,7 @@ namespace MajongGame.Gameplay
         private void Update()
         {
             if (_tilesHolder == null
+                || !GlobalVariablesController.CanClickTiles
                 || GlobalVariablesController.OnLevelPreparing
                 || GlobalVariablesController.OnLoadingScene
                 || GlobalVariablesController.InPopup

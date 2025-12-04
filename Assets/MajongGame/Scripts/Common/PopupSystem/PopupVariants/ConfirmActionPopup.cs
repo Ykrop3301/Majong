@@ -10,7 +10,7 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
 
         public void SetConfirm(System.Action action, string actionText = "совершить действие")
         {
-            _confirmTextField.text = $"Вы уверены что хотите {actionText}?";
+            _confirmTextField.text = $"Вы уверены, что хотите {actionText}?";
             _confirmAction = action;
         }
         

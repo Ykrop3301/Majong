@@ -6,6 +6,7 @@ namespace MajongGame.Common.PopupSystem
     public abstract class Popup: MonoBehaviour
     {
         [SerializeField] private Transform _transform;
+        [SerializeField] private AudioSource _audioSource;
 
         private const float ANIMATION_DURATION = 0.5f;
 
@@ -18,6 +19,9 @@ namespace MajongGame.Common.PopupSystem
 
             gameObject.SetActive(true);
             _transform.DOScale(1f, ANIMATION_DURATION).From(0f);
+
+            _audioSource.pitch = 1f;
+            _audioSource.Play();
         }
 
         public virtual void Hide(System.Action actionAfterHide)
@@ -33,6 +37,9 @@ namespace MajongGame.Common.PopupSystem
                     gameObject.SetActive(false);
                     actionAfterHide();
                 });
+
+            _audioSource.pitch = 0.5f;
+            _audioSource.Play();
         }
 
         public virtual void Hide()
@@ -47,6 +54,9 @@ namespace MajongGame.Common.PopupSystem
                     GlobalVariablesController.InPopup = false;
                     gameObject.SetActive(false);
                 });
+
+            _audioSource.pitch = 0.5f;
+            _audioSource.Play();
         }
     }
 }

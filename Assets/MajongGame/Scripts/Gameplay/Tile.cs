@@ -28,6 +28,8 @@ namespace MajongGame.Gameplay
         public void SetTaked()
         {
             IsTaked = true;
+
+            _audioSource.pitch = 1f;
             _audioSource.Play();
             Selected?.Invoke(this);
         }
@@ -40,6 +42,7 @@ namespace MajongGame.Gameplay
             IsActive = flag;
             Color newColor = flag ? Color.white : Color.gray / 2;
 
+            StartCoroutine(Animator.ChangeColor());
             StartCoroutine(_colorChanger.ChangeColorTo(newColor));
         }
 
@@ -107,7 +110,7 @@ namespace MajongGame.Gameplay
         private void OnEnable()
         {
             if (Animator == null)
-                Animator = new TileAnimator(Transform);
+                Animator = new TileAnimator(Transform, _audioSource);
 
             StartCoroutine(Animator.ShowTile());
         }

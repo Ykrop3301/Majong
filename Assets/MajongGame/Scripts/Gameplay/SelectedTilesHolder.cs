@@ -16,6 +16,7 @@ namespace MajongGame.Gameplay
     {
         [SerializeField] private int _tilesCount = 7;
         [SerializeField] private float _tileMovingDuration = 0.5f;
+        [SerializeField] private AudioSource _audioSource;
 
         private BoxCollider _boxCollider;
         private Dictionary<Vector3, Tile> _tilesPoints = new Dictionary<Vector3, Tile>();
@@ -178,6 +179,8 @@ namespace MajongGame.Gameplay
 
         private IEnumerator KillTiles(List<Tile> tiles)
         {
+            _audioSource.Play();
+
             Vector3 righterPoint = tiles.Last().Transform.position;
             foreach (Tile tile in tiles)
             {

@@ -12,6 +12,7 @@ namespace MajongGame.Gameplay
         [field: SerializeField] public Transform Transform;
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private AudioSource _audioSource;
 
         public event System.Action<Tile> Died;
         public event System.Action<Tile> Selected;
@@ -27,6 +28,7 @@ namespace MajongGame.Gameplay
         public void SetTaked()
         {
             IsTaked = true;
+            _audioSource.Play();
             Selected?.Invoke(this);
         }
 

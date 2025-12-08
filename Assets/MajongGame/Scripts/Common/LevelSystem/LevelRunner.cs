@@ -2,11 +2,13 @@
 using MajongGame.Configs.Level;
 using MajongGame.Gameplay;
 using MajongGame.Gameplay.Level;
+using MajongGame.Gameplay.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace MajongGame.Common.LevelSystem
 {
@@ -35,28 +37,32 @@ namespace MajongGame.Common.LevelSystem
             if (SceneManager.GetActiveScene().name != "GameplayScene")
             {
                 _sceneChanger.LoadScene("GameplayScene");
-                _coroutineRunner.StartCoroutine(WaitLoadSceneCoroutine());
+                _coroutineRunner.StartCoroutine(WaitLoadSceneCoroutine(location, id));
             }
-            else PrepareGame();
+            else PrepareGame(location, id);
         }
 
-        private IEnumerator WaitLoadSceneCoroutine()
+        private IEnumerator WaitLoadSceneCoroutine(LevelLocationConfig location, int id)
         {
             yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "GameplayScene");
-            PrepareGame();
+            PrepareGame(location, id);
         }
 
-        private void PrepareGame()
+        private void PrepareGame(LevelLocationConfig location, int id)
         {
             GlobalVariablesController.OnLevelPreparing = true;
 
-            LevelConfig levelConfig = _levelsController.CurrentLevel.location.GetLevel(_levelsController.CurrentLevel.levelId);
+            LevelConfig levelConfig = location.GetLevel(id);
+
+            var bgHolder = GameObject.Instantiate(Resources.Load<BackgroundHolder>("Prefabs/UI/BackgroundCanvas"), null);
+            bgHolder.SetBG(location.Background);
+
             Tile tilePrefab = Resources.Load<Tile>($"Prefabs/Tiles/{PlayerPrefs.GetString("TilePrefabName")}");
 
             List<Tile> tiles = _tilesSpawner.SpawnLevel(levelConfig, tilePrefab);
             _unselectedTilesHolder.SetTiles(tiles);
 
-            _spriteRandomizer.Randomize(_levelsController.CurrentLevel.location.TilePictures, tiles);
+            _spriteRandomizer.Randomize(location.TilePictures, tiles);
 
             _coroutineRunner.StartCoroutine(SmoothShowTilesCoroutine(tiles));
         }

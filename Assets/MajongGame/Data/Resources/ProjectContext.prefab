@@ -80,6 +80,7 @@ MonoBehaviour:
   _popupsHolder: {fileID: 1582666730914131684}
   _locations:
   - {fileID: 11400000, guid: 05344a0a4ee248d4aa819921c2cc9e5a, type: 2}
+  - {fileID: 11400000, guid: 7446a759a21b344418cf31f603f328fd, type: 2}
   _coroutineRunner: {fileID: -2023015051615808001}
   _sceneChanger: {fileID: 219675492828980605}
 --- !u!114 &-2023015051615808001

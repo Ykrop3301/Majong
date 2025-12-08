@@ -21,6 +21,7 @@ namespace MajongGame.Common.LevelSystem
             {
                 PlayerPrefs.SetString("UnlockedLocations", _locations.First().Name);
                 PlayerPrefs.SetInt("UnlockedLevelsCount" + _locations.First().Name, 1);
+                PlayerPrefs.SetString("CurrentLocation", _locations.First().Name);
             }
 
             _levelRunner = new LevelRunner(coroutineRunner, this, popupsHolder, sceneChanger);
@@ -75,14 +76,16 @@ namespace MajongGame.Common.LevelSystem
                 if (_locations.Count <= nextLocationId)
                     return;
 
-                unlockedLocations += $", {_locations[nextLocationId].Name}";
+                unlockedLocations += $",{_locations[nextLocationId].Name}";
                 PlayerPrefs.SetString("UnlockedLocations", unlockedLocations);
+                PlayerPrefs.SetString("CurrentLocation", _locations[nextLocationId].Name);
             }
         }
 
         public void PlayCurrentLevel()
         {
-            string lastLocation = PlayerPrefs.GetString("UnlockedLocations").Split(',').Last();
+            string lastLocation = PlayerPrefs.GetString("CurrentLocation");
+
             CurrentLevel = (GetLocation(lastLocation), PlayerPrefs.GetInt("UnlockedLevelsCount" + lastLocation) - 1);
             PlayLevel(CurrentLevel.location.Name, CurrentLevel.levelId);
         }

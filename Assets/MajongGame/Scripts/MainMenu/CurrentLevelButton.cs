@@ -1,11 +1,14 @@
 ﻿using MajongGame.Common.LevelSystem;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace MajongGame.MainMenu
 {
     public class CurrentLevelButton : MonoBehaviour
     {
+        [SerializeField] private Image _image;
+        
         private ILevelsController _levelsController;
 
         [Inject]

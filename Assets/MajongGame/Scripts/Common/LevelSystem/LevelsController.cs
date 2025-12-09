@@ -79,6 +79,7 @@ namespace MajongGame.Common.LevelSystem
                     return;
 
                 unlockedLocations += $",{_locations[nextLocationId].Name}";
+                PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + CurrentLevel.location.Reward);
                 PlayerPrefs.SetString("UnlockedLocations", unlockedLocations);
                 PlayerPrefs.SetString("CurrentLocation", _locations[nextLocationId].Name);
                 PlayerPrefs.SetInt("UnlockedLevelsCount" + _locations[nextLocationId].Name, 1);

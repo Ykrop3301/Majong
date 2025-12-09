@@ -2,6 +2,7 @@
 using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MajongGame.Gameplay.Level
 {

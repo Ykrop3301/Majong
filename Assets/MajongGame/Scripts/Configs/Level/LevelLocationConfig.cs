@@ -10,6 +10,8 @@ namespace MajongGame.Configs.Level
         [field: SerializeField] public Sprite Background { get; private set; }
         [field: SerializeField] public Sprite LocationImage { get; private set; }
         [field: SerializeField] public List<Sprite> TilePictures { get; private set; }
+        [field: SerializeField] public int Reward { get; private set; } = 100;
+        [field: SerializeField] public int Cost { get; private set; } = 100;
 
         [SerializeField] private List<LevelConfig> _levels;
 
@@ -18,7 +20,7 @@ namespace MajongGame.Configs.Level
         public LevelConfig GetLevel(int num)
         {
             if (num < 0 || num >= _levels.Count)
-                throw new System.Exception("Invalid level number.");
+                throw new System.Exception($"Invalid level number. {num}");
 
             return _levels[num];
         }

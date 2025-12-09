@@ -68,6 +68,8 @@ namespace MajongGame.Common.LevelSystem
                 int unlockedLevelsCount = PlayerPrefs.GetInt("UnlockedLevelsCount" + CurrentLevel.location.Name);
 
                 PlayerPrefs.SetInt("UnlockedLevelsCount" + CurrentLevel.location.Name, unlockedLevelsCount + 1);
+
+                PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + CurrentLevel.location.Reward);
             }
             else
             {
@@ -79,14 +81,15 @@ namespace MajongGame.Common.LevelSystem
                 unlockedLocations += $",{_locations[nextLocationId].Name}";
                 PlayerPrefs.SetString("UnlockedLocations", unlockedLocations);
                 PlayerPrefs.SetString("CurrentLocation", _locations[nextLocationId].Name);
+                PlayerPrefs.SetInt("UnlockedLevelsCount" + _locations[nextLocationId].Name, 1);
             }
         }
 
         public void PlayCurrentLevel()
         {
-            string lastLocation = PlayerPrefs.GetString("CurrentLocation");
+            string currentLocation = PlayerPrefs.GetString("CurrentLocation");
 
-            CurrentLevel = (GetLocation(lastLocation), PlayerPrefs.GetInt("UnlockedLevelsCount" + lastLocation) - 1);
+            CurrentLevel = (GetLocation(currentLocation), PlayerPrefs.GetInt("UnlockedLevelsCount" + currentLocation) - 1);
             PlayLevel(CurrentLevel.location.Name, CurrentLevel.levelId);
         }
     }

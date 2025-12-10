@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
+  m_Name: Ocean
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u041E\u043A\u0435\u0430\u043D"
+  <Background>k__BackingField: {fileID: 21300000, guid: 03f1a77e44b737d4291fe9a451b53745, type: 3}
+  <LocationImage>k__BackingField: {fileID: -1717600869, guid: 548aa94bb9043f043b97df973e636c71, type: 3}
+  <TilePictures>k__BackingField:
+  - {fileID: 1607781164, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: -914433283, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: -265111050, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: -584575076, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: 1523838215, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: 1608489928, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: -1166507027, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: 1510858297, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  - {fileID: 2067893, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  <Reward>k__BackingField: 250
+  <Cost>k__BackingField: 100
+  _levels:
+  - {fileID: 11400000, guid: d2154b4df44c88d4299385fed4d908e1, type: 2}
+  - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}
+  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}

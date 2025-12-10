@@ -81,6 +81,10 @@ MonoBehaviour:
   _locations:
   - {fileID: 11400000, guid: 05344a0a4ee248d4aa819921c2cc9e5a, type: 2}
   - {fileID: 11400000, guid: 7446a759a21b344418cf31f603f328fd, type: 2}
+  - {fileID: 11400000, guid: ccae390b8c55b214f9cbd75d0f2d68e9, type: 2}
+  - {fileID: 11400000, guid: f545fe2fd4eee3c4ab33635d22b2fde9, type: 2}
+  - {fileID: 11400000, guid: 8124858296a5c1f46a20457b58676c8f, type: 2}
+  - {fileID: 11400000, guid: 0a825669c3ff37342b3388bbbcdd3cd5, type: 2}
   _coroutineRunner: {fileID: -2023015051615808001}
   _sceneChanger: {fileID: 219675492828980605}
 --- !u!114 &-2023015051615808001

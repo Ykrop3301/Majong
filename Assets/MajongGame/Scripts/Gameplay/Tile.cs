@@ -40,7 +40,7 @@ namespace MajongGame.Gameplay
                 _colorChanger = new TileColorChanger(_meshRenderer, CHANGE_COLOR_DURATION);
 
             IsActive = flag;
-            Color newColor = flag ? Color.white : Color.gray / 2;
+            Color newColor = flag ? Color.white : Color.gray;
 
             StartCoroutine(Animator.ChangeColor());
             StartCoroutine(_colorChanger.ChangeColorTo(newColor));

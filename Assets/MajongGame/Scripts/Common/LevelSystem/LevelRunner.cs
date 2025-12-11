@@ -2,6 +2,7 @@
 using MajongGame.Configs.Level;
 using MajongGame.Gameplay;
 using MajongGame.Gameplay.Level;
+using MajongGame.Gameplay.Tiles;
 using MajongGame.Gameplay.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -71,11 +72,11 @@ namespace MajongGame.Common.LevelSystem
         {
             foreach (Tile tile in tiles)
             {
-                tile.gameObject.SetActive(true);
+                tile.Show();
                 yield return new WaitForSeconds(0.02f);
             }
 
-            yield return new WaitForSeconds(tiles.Last().Animator.AnimationDuration);
+            yield return new WaitUntil(() => !tiles.Last().IsPlayingAnimation);
 
             GlobalVariablesController.OnLevelPreparing = false;
             CheckTilesActivity(tiles);
@@ -85,7 +86,7 @@ namespace MajongGame.Common.LevelSystem
         {
             foreach (Tile tile in tiles)
             {
-                tile.CheckActive();
+                tile.CheckCoveringTiles();
             }
         }
     }

@@ -2,6 +2,7 @@
 using MajongGame.Common;
 using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
+using MajongGame.Gameplay.Tiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,12 +59,15 @@ namespace MajongGame.Gameplay
             FreePointsCount = _tilesCount;
         }
 
+        public bool CanAddTile() =>
+            FreePointsCount > 0;
+
         public bool TryAddTile(Tile tile)
         {
-            if (FreePointsCount > 0 & tile.IsActive)
+            if (FreePointsCount > 0 & tile.TileDTO.IsActive)
             {
                 List<Vector3> sameTiles = _tilesPoints
-                    .Where(x => x.Value != null && x.Value.Sprite == tile.Sprite)
+                    .Where(x => x.Value != null && x.Value.TileDTO.Sprite == tile.TileDTO.Sprite)
                     .Select(x => x.Key)
                     .ToList();
 
@@ -97,15 +101,7 @@ namespace MajongGame.Gameplay
 
                 return true;
             }
-            else
-            {
-                if (!tile.IsActive)
-                {
-                    StartCoroutine(tile.Animator.CantTouch());
-                }
-
-                return false;
-            }
+            return false;
         }
 
         private void MoveTile(Tile tile, Vector3 point)
@@ -120,7 +116,7 @@ namespace MajongGame.Gameplay
             else _inCoroutine = true;
     
             _tilesPoints[point] = tile;
-            tile.Transform.DOMove(new Vector3(point.x, point.y, point.z), _tileMovingDuration);
+            tile.TileDTO.Transform.DOMove(new Vector3(point.x, point.y, point.z), _tileMovingDuration);
             
             if (!_inCoroutine)
                 StartCoroutine(WaitAndCheckEmptyPointsCoroutine());
@@ -158,7 +154,7 @@ namespace MajongGame.Gameplay
             {
                 if (tile == null) continue;
 
-                if (sameTiles.Count > 0 && tile.Sprite == sameTiles.Last().Sprite)
+                if (sameTiles.Count > 0 && tile.TileDTO.Sprite == sameTiles.Last().TileDTO.Sprite)
                 {
                     sameTiles.Add(tile);
 
@@ -181,10 +177,10 @@ namespace MajongGame.Gameplay
         {
             _audioSource.Play();
 
-            Vector3 righterPoint = tiles.Last().Transform.position;
+            Vector3 righterPoint = tiles.Last().TileDTO.Transform.position;
             foreach (Tile tile in tiles)
             {
-                _tilesPoints[tile.Transform.position] = null;
+                _tilesPoints[tile.TileDTO.Transform.position] = null;
 
                 tile.DOKill();
                 tile.Die();
@@ -210,7 +206,7 @@ namespace MajongGame.Gameplay
                 pointToMove.x -= 3 * _tileSize.x;
 
                 _tilesPoints[pointToMove] = pair.Value;
-                pair.Value.Transform.DOMove(pointToMove, _tileMovingDuration);
+                pair.Value.TileDTO.Transform.DOMove(pointToMove, _tileMovingDuration);
             }
 
             GlobalVariablesController.CanClickTiles = true;

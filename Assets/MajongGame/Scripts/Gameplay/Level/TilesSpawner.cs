@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using MajongGame.Configs.Level;
+using MajongGame.Gameplay.Tiles;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,12 +59,10 @@ namespace MajongGame.Gameplay.Level
                     Vector3 position = new Vector3(tileMap[collumn, row].x, tileSize.y * layerNum, tileMap[collumn, row].y);
 
                     Tile tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
-                    tile.transform.SetParent(parent);
+                    tile.TileDTO.Transform.SetParent(parent);
 
                     newTiles.Add(tile);
                     collumn++;
-
-                    tile.gameObject.SetActive(false);
                 }
                 else if (c == '#')
                 {

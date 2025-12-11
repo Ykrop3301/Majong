@@ -18,7 +18,7 @@ namespace MajongGame.Common
                 PlayerPrefs.SetString("TilePrefabName", "DefaultTile");
 
             GlobalVariablesController.OnLoadingScene = false;
-            GlobalVariablesController.OnLevelPreparing = false;
+            GlobalVariablesController.LevelPreparing = false;
             GlobalVariablesController.InPopup = false;
             GlobalVariablesController.CanClickTiles = true;
         }

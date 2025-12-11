@@ -15,7 +15,7 @@ namespace MajongGame.Scris.Tests
             if (Input.GetKeyDown(KeyCode.K))
             {
                 Debug.Log($"InPopup={GlobalVariablesController.InPopup}," +
-                    $" OnLevelPreparing={GlobalVariablesController.OnLevelPreparing}," +
+                    $" OnLevelPreparing={GlobalVariablesController.LevelPreparing}," +
                     $"OnLoadingScene={GlobalVariablesController.OnLoadingScene}," +
                     $"CanClickTiles={GlobalVariablesController.CanClickTiles},");
             }

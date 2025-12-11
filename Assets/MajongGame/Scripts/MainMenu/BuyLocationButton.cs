@@ -4,7 +4,6 @@ using MajongGame.Configs.Level;
 using TMPro;
 using UnityEngine;
 using Zenject;
-using static UnityEditor.FilePathAttribute;
 
 namespace MajongGame.MainMenu
 {

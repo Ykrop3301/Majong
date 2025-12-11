@@ -1,16 +1,18 @@
 ﻿using MajongGame.Common.LevelSystem;
 using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
+using MajongGame.Gameplay.Tiles;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MajongGame.Gameplay.Level
 {
     public class UnselectedTilesHolder
     {
-        private List<Tile> _tiles;
         private readonly PopupsHolder _popupsHolder;
         private readonly ILevelsController _levelsController;
+
+        private List<Tile> _unselectedTiles;
+        private int _unselectedTilesCount;
 
         public UnselectedTilesHolder(PopupsHolder popupsHolder, ILevelsController levelsController)
         {
@@ -20,22 +22,32 @@ namespace MajongGame.Gameplay.Level
 
         public void SetTiles(List<Tile> tiles)
         {
-            _tiles = tiles;
+            _unselectedTiles = tiles;
+            _unselectedTilesCount = _unselectedTiles.Count;
 
-            foreach (Tile tile in _tiles)
+            foreach (Tile tile in _unselectedTiles)
             {
-                tile.Died += OnTileDestroyed;
+                tile.TileDTO.Dead += OnTileDestroyed;
             }
         }
 
-        private void OnTileDestroyed(Tile tile)
+        private void OnTileDestroyed()
         {
-            _tiles.Remove(tile);
+            _unselectedTilesCount--;
 
-            if (_tiles.Count == 0)
+            if (_unselectedTilesCount == 0)
             {
+                ForgetAllTiles();
                 _levelsController.UnlockNextLevel();
                 _popupsHolder.GetPopup<WinPopup>().Show();
+            }
+        }
+
+        private void ForgetAllTiles()
+        {
+            foreach (Tile tile in _unselectedTiles)
+            {
+                tile.TileDTO.Taked -= OnTileDestroyed;
             }
         }
     }

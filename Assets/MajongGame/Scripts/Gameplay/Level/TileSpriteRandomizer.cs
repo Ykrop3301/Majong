@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MajongGame.Gameplay.Tiles;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MajongGame.Gameplay.Level

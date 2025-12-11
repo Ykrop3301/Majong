@@ -1,0 +1,3 @@
+﻿Build path: D:/Unity/Projects/Majong/Builds/Test/1
+Build number: 0
+PluginYG version: 2.007

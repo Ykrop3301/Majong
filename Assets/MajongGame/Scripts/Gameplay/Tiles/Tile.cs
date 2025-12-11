@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MajongGame.Gameplay.Tiles
 {
@@ -41,12 +40,6 @@ namespace MajongGame.Gameplay.Tiles
         {
             _animator.PlayOnTileSpawned();
             _audioController.Play("TileTaked", Random.Range(0.8f, 1f));
-        }
-
-        private IEnumerator WaitAnimationStopped(System.Action action)
-        {
-            yield return new WaitUntil(() => !_animator.IsPlaying);
-            action();
         }
 
         public bool TryTake()

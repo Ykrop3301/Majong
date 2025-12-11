@@ -1,21 +1,31 @@
 ﻿using MajongGame.Common.PopupSystem;
 using MajongGame.Configs.Level;
+using MajongGame.Gameplay.Level;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MajongGame.Common.LevelSystem
 {
     public class LevelsController : ILevelsController
     {
         private readonly List<LevelLocationConfig> _locations;
-        private readonly LevelRunner _levelRunner;
+        private readonly CoroutineRunner _coroutineRunner;
+        private readonly PopupsHolder _popupsHolder;
+        private readonly SceneChanger _sceneChanger;
+        private LevelPreparer _levelPreparer;
 
         public (LevelLocationConfig location, int levelId) CurrentLevel { get; private set; }
 
         public LevelsController(List<LevelLocationConfig> locations, CoroutineRunner coroutineRunner, PopupsHolder popupsHolder, SceneChanger sceneChanger)
         {
             _locations = locations;
+            _coroutineRunner = coroutineRunner;
+            _popupsHolder = popupsHolder;
+            _sceneChanger = sceneChanger;
 
             if (!PlayerPrefs.HasKey("UnlockedLocations"))
             {
@@ -24,7 +34,6 @@ namespace MajongGame.Common.LevelSystem
                 PlayerPrefs.SetString("CurrentLocation", _locations.First().Name);
             }
 
-            _levelRunner = new LevelRunner(coroutineRunner, this, popupsHolder, sceneChanger);
         }
 
         public LevelLocationConfig GetLocation(string locationName)
@@ -49,8 +58,25 @@ namespace MajongGame.Common.LevelSystem
                 throw new System.Exception($"Level {levelId} is not unlocked");
 
             CurrentLevel = (GetLocation(locationName), levelId);
+            
+            _coroutineRunner.StartCoroutine(WaitSceneChangeCoroutine());
+        }
 
-            _levelRunner.RunLevel(CurrentLevel.location, CurrentLevel.levelId);
+        private IEnumerator WaitSceneChangeCoroutine()
+        {
+            if (SceneManager.GetActiveScene().name != "GameplayScene")
+            {
+                _sceneChanger.LoadScene("GameplayScene");
+                yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "GameplayScene");
+                _levelPreparer = new LevelPreparer(_coroutineRunner, this, _popupsHolder, _sceneChanger);
+            }
+            else
+            {
+                if (_levelPreparer == null)
+                    _levelPreparer = new LevelPreparer(_coroutineRunner, this, _popupsHolder, _sceneChanger);
+            }
+
+           _levelPreparer.PrepareLevel(CurrentLevel.location, CurrentLevel.levelId);
         }
 
         public void PlayNextLevel()

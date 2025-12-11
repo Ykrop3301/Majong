@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6644773853398878829}
-  Transform: {fileID: 9046006433141786426}
   _meshRenderer: {fileID: 1077672660256778697}
   _particleSystem: {fileID: 4753723481622094024}
   _audioSource: {fileID: 5082096151304293193}
@@ -271,7 +270,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.375, z: -0}
-  m_LocalScale: {x: 0.47851, y: 0.47851, z: 0.47851}
+  m_LocalScale: {x: 1.0875576, y: 1.0875576, z: 1.0875576}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9046006433141786426}
@@ -320,7 +319,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1607781164, guid: a9ef144620789a64f968300adfda8364, type: 3}
+  m_Sprite: {fileID: -2117884910, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
+  m_Name: FutureWorld
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: FutureWorld
+  <Background>k__BackingField: {fileID: 21300000, guid: 3372792bb1280654fa86f71ea22e7372, type: 3}
+  <LocationImage>k__BackingField: {fileID: 67932497, guid: 1508bb7e95aba7247983c4727a01f96d, type: 3}
+  <TilePictures>k__BackingField:
+  - {fileID: 979684014, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: -826786861, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: 1756481616, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: 1930192178, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: -1881576170, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: -182998244, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: 1857091401, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: 987842422, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  - {fileID: 837130457, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
+  <Reward>k__BackingField: 100
+  <Cost>k__BackingField: 100
+  _levels:
+  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
+  - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}

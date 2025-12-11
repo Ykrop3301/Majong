@@ -66,6 +66,7 @@ namespace MajongGame.Gameplay
         {
             if (FreePointsCount > 0 & tile.TileDTO.IsActive)
             {
+                GlobalVariablesController.CanClickTiles = false;
                 List<Vector3> sameTiles = _tilesPoints
                     .Where(x => x.Value != null && x.Value.TileDTO.Sprite == tile.TileDTO.Sprite)
                     .Select(x => x.Key)
@@ -106,8 +107,6 @@ namespace MajongGame.Gameplay
 
         private void MoveTile(Tile tile, Vector3 point)
         {
-            GlobalVariablesController.CanClickTiles = false;
-
             if (!_tilesPoints.ContainsKey(point))
                 throw new System.Exception("Point not contains.");
 

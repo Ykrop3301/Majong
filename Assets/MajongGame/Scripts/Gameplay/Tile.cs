@@ -104,6 +104,7 @@ namespace MajongGame.Gameplay
             yield return new WaitUntil(() => _particleSystem.isStopped);
 
             Died?.Invoke(this);
+            Transform.DOKill();
             Destroy(gameObject);
         }
 

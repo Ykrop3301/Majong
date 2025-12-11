@@ -10,17 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
-<<<<<<<< HEAD:Assets/MajongGame/Data/Resources/Configs/Gameplay/Locations/Forest/Forest.asset
-  m_Name: Forest
-  m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041B\u0435\u0441"
-  <Background>k__BackingField: {fileID: 21300000, guid: 21e360c77769f034b9f9f3db1909112a, type: 3}
-========
   m_Name: FutureWorld
   m_EditorClassIdentifier: 
   <Name>k__BackingField: FutureWorld
   <Background>k__BackingField: {fileID: 21300000, guid: 3372792bb1280654fa86f71ea22e7372, type: 3}
->>>>>>>> main:Assets/MajongGame/Data/Resources/Configs/Gameplay/Locations/FutureWorld/FutureWorld.asset
   <LocationImage>k__BackingField: {fileID: 67932497, guid: 1508bb7e95aba7247983c4727a01f96d, type: 3}
   <TilePictures>k__BackingField:
   - {fileID: 979684014, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Japan
   <Background>k__BackingField: {fileID: 21300000, guid: 6e9bab324edb3bf4d88ebc239dc07a48, type: 3}
-  <LocationImage>k__BackingField: {fileID: 67932497, guid: 1508bb7e95aba7247983c4727a01f96d, type: 3}
+  <LocationImage>k__BackingField: {fileID: 21300000, guid: ade2b2731dd28714d8608925434e60fa, type: 3}
+  <ParticleSprite>k__BackingField: {fileID: 295349152, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
   <TilePictures>k__BackingField:
   - {fileID: 778112887, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
   - {fileID: -1724025949, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}

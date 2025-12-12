@@ -25,6 +25,11 @@ namespace MajongGame.Common.PopupSystem.PopupVariants
             base.Show();
             if (_levelsController.CurrentLevel.location.LevelsCount - 1 == _levelsController.CurrentLevel.levelId)
                 OnLocationEnded();
+            else
+            {
+                _centerMainMenuButton.gameObject.SetActive(false);
+                _twoButtonsHolder.gameObject.SetActive(true);
+            }
         }
 
         public void NextLevel()

@@ -27,18 +27,18 @@ namespace MajongGame.Gameplay.Tiles
 
         private void Subscribe()
         {
+            _tile.Dead += Unsubscribe;
             _tile.Dead += PlayTileDead;
             _tile.Taked += PlayOnTileTaked;
             _tile.ActiveChanged += PlayOnTileActiveChanged;
-            _tile.Dead += Unsubscribe;
         }
 
         private void Unsubscribe()
         {
+            _tile.Dead -= Unsubscribe;
             _tile.Dead -= PlayTileDead;
             _tile.Taked -= PlayOnTileTaked;
             _tile.ActiveChanged -= PlayOnTileActiveChanged;
-            _tile.Dead -= Unsubscribe;
         }
 
         public void PlayOnTileSpawned()

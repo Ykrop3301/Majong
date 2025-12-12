@@ -23,8 +23,8 @@ namespace MajongGame.Gameplay
         private Dictionary<Vector3, Tile> _tilesPoints = new Dictionary<Vector3, Tile>();
         public int FreePointsCount { get; private set; }
         private Vector3 _tileSize;
-        private bool _inCoroutine = false;
         private PopupsHolder _popupsHolder;
+        private int _movingTiles = 0;
 
         [Inject]
         private void Construct(PopupsHolder popupsHolder)
@@ -62,11 +62,13 @@ namespace MajongGame.Gameplay
         public bool CanAddTile() =>
             FreePointsCount > 0;
 
+
         public bool TryAddTile(Tile tile)
         {
             if (FreePointsCount > 0 & tile.TileDTO.IsActive)
             {
                 GlobalVariablesController.CanClickTiles = false;
+
                 List<Vector3> sameTiles = _tilesPoints
                     .Where(x => x.Value != null && x.Value.TileDTO.Sprite == tile.TileDTO.Sprite)
                     .Select(x => x.Key)
@@ -76,12 +78,7 @@ namespace MajongGame.Gameplay
 
                 if (sameTiles.Count > 0)
                 {
-                    Vector3 rightmostPoint = sameTiles.First();
-                    foreach (Vector3 point in sameTiles)
-                    {
-                        if (point.x > rightmostPoint.x)
-                            rightmostPoint = point;
-                    }
+                    Vector3 rightmostPoint = sameTiles.Last();
 
                     newPoint = rightmostPoint;
                     newPoint.x += _tileSize.x;
@@ -95,7 +92,7 @@ namespace MajongGame.Gameplay
                 }
 
                 if (!_tilesPoints.ContainsKey(newPoint))
-                    throw new System.Exception("Error in calculating a new point");
+                    throw new System.Exception($"Error in calculating a new point {newPoint}");
 
                 FreePointsCount--;
                 MoveTile(tile, newPoint);
@@ -108,20 +105,30 @@ namespace MajongGame.Gameplay
         private void MoveTile(Tile tile, Vector3 point)
         {
             if (!_tilesPoints.ContainsKey(point))
-                throw new System.Exception("Point not contains.");
+                throw new System.Exception($"Point {point} not contains.");
+
+            _movingTiles++;
 
             if (_tilesPoints[point] != null)
-                MoveTile(_tilesPoints[point], new Vector3(point.x + _tileSize.x, point.y, point.z));
-            else _inCoroutine = true;
-    
-            _tilesPoints[point] = tile;
-            tile.TileDTO.Transform.DOMove(new Vector3(point.x, point.y, point.z), _tileMovingDuration);
-            
-            if (!_inCoroutine)
-                StartCoroutine(WaitAndCheckEmptyPointsCoroutine());
-            else
             {
-                StopAllCoroutines();
+                Tile oldTile = _tilesPoints[point];
+                _tilesPoints[point] = tile;
+
+                MoveTile(oldTile, new Vector3(point.x + _tileSize.x, point.y, point.z));
+            }
+            else _tilesPoints[point] = tile;
+
+            _movingTiles--;
+
+            if (_movingTiles == 0)
+            {
+                foreach (Vector3 tilePoint in _tilesPoints.Keys)
+                {
+                    if (_tilesPoints[tilePoint] == null)
+                        continue;
+
+                    _tilesPoints[tilePoint].TileDTO.Transform.DOMove(tilePoint, _tileMovingDuration);
+                }
                 StartCoroutine(WaitAndCheckEmptyPointsCoroutine());
             }
         }
@@ -129,20 +136,9 @@ namespace MajongGame.Gameplay
         private IEnumerator WaitAndCheckEmptyPointsCoroutine()
         {
             yield return new WaitForSeconds(_tileMovingDuration);
-            _inCoroutine = false;
 
             CheckThreeTiles();
             CheckEndGame();
-        }
-
-        private void CheckEndGame()
-        {
-            if (FreePointsCount == 0)
-            {
-                LosePopup popup = _popupsHolder.GetPopup<LosePopup>();
-                FreePointsCount = _tilesCount;
-                popup.Show();
-            }
         }
 
         private void CheckThreeTiles()
@@ -169,7 +165,18 @@ namespace MajongGame.Gameplay
                     sameTiles.Add(tile);
                 }
             }
+
             GlobalVariablesController.CanClickTiles = true;
+        }
+
+        private void CheckEndGame()
+        {
+            if (FreePointsCount == 0)
+            {
+                LosePopup popup = _popupsHolder.GetPopup<LosePopup>();
+                FreePointsCount = _tilesCount;
+                popup.Show();
+            }
         }
 
         private IEnumerator KillTiles(List<Tile> tiles)
@@ -181,7 +188,6 @@ namespace MajongGame.Gameplay
             {
                 _tilesPoints[tile.TileDTO.Transform.position] = null;
 
-                tile.DOKill();
                 tile.Die();
                 FreePointsCount++;
                 yield return new WaitForSeconds(0.1f);
@@ -208,6 +214,12 @@ namespace MajongGame.Gameplay
                 pair.Value.TileDTO.Transform.DOMove(pointToMove, _tileMovingDuration);
             }
 
+            StartCoroutine(WaitTileMovingCoroutine());
+        }
+
+        private IEnumerator WaitTileMovingCoroutine()
+        {
+            yield return new WaitForSeconds(_tileMovingDuration * 1.2f);
             GlobalVariablesController.CanClickTiles = true;
         }
     }

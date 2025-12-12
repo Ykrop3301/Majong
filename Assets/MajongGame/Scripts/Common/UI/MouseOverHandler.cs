@@ -29,5 +29,10 @@ namespace MajongGame.Common.UI
         {
             _transform.DOScale(_originalScale, SCALING_DURATION);
         }
+
+        private void OnDisable()
+        {
+            _transform.DOKill();
+        }
     }
 }

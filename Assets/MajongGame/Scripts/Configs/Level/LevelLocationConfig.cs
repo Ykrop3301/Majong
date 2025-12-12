@@ -9,6 +9,7 @@ namespace MajongGame.Configs.Level
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public Sprite Background { get; private set; }
         [field: SerializeField] public Sprite LocationImage { get; private set; }
+        [field: SerializeField] public Sprite ParticleSprite { get; private set; }
         [field: SerializeField] public List<Sprite> TilePictures { get; private set; }
         [field: SerializeField] public int Reward { get; private set; } = 100;
         [field: SerializeField] public int Cost { get; private set; } = 100;

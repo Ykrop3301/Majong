@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace MajongGame.Gameplay.Tiles
 {
@@ -44,7 +45,7 @@ namespace MajongGame.Gameplay.Tiles
 
         public bool TryTake()
         {
-            if (TileDTO.IsActive)
+            if (TileDTO.IsActive && !TileDTO.IsTaked)
             {
                 TileDTO.SetTaked();
                 return true;
@@ -63,7 +64,7 @@ namespace MajongGame.Gameplay.Tiles
 
         public void Die()
         {
-            TileDTO.SetDied();
+            TileDTO.SetDead();
         }
 
         private void OnEnable()

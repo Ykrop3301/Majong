@@ -37,9 +37,9 @@ namespace MajongGame.Gameplay.Level
 
             if (_unselectedTilesCount == 0)
             {
+                _popupsHolder.GetPopup<WinPopup>().Show();
                 ForgetAllTiles();
                 _levelsController.UnlockNextLevel();
-                _popupsHolder.GetPopup<WinPopup>().Show();
             }
         }
 

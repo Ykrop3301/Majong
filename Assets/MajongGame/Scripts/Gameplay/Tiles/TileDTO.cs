@@ -31,7 +31,7 @@ namespace MajongGame.Gameplay.Tiles
             ActiveChanged?.Invoke(IsActive);
         }
 
-        public void SetDied()
+        public void SetDead()
         {
             IsDead = true;
             Dead?.Invoke();

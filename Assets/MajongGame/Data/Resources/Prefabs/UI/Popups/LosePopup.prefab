@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2677498092461852347}
   - component: {fileID: 3402292794982048591}
   - component: {fileID: 2841446274551396121}
+  - component: {fileID: 1333608938004540068}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -243,6 +244,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1333608938004540068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629657753650509062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3073625410203820897}
 --- !u!1 &1629865670176643485
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +349,7 @@ GameObject:
   - component: {fileID: 909609635724933656}
   - component: {fileID: 3082014340313975366}
   - component: {fileID: 4198591425115266752}
+  - component: {fileID: 5664242321119399038}
   m_Layer: 5
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -565,6 +580,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5664242321119399038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940068074128032508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 341945183195891807}
 --- !u!1 &5112873016422683871
 GameObject:
   m_ObjectHideFlags: 0

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 6185619582905347630}
   - component: {fileID: 6972420581953909302}
   - component: {fileID: 6077807291914113817}
+  - component: {fileID: 1981279664556107981}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -379,6 +380,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1981279664556107981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194909809291759287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 8069074853368386901}
 --- !u!1 &5912420016667248798
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +777,7 @@ GameObject:
   - component: {fileID: 6108877931849088076}
   - component: {fileID: 7646439474693464712}
   - component: {fileID: 4777274780773245151}
+  - component: {fileID: 4207791829975447694}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -993,6 +1008,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4207791829975447694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979389992175307422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 117917059240624979}
 --- !u!1 &8114126590769792225
 GameObject:
   m_ObjectHideFlags: 0

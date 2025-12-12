@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3559520387078480077}
   - component: {fileID: 1928379615761774941}
   - component: {fileID: 4348714175200823710}
+  - component: {fileID: 4658931001730218140}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -243,6 +244,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4658931001730218140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95126950440083624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 4650179185026027017}
 --- !u!1 &1268585565660722144
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +562,7 @@ GameObject:
   - component: {fileID: 1977672906117412368}
   - component: {fileID: 4553322121694136034}
   - component: {fileID: 7724833599831993836}
+  - component: {fileID: 843952672589535480}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -778,6 +793,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &843952672589535480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201545865201891498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1039476915930062431}
 --- !u!1 &2686122808771739906
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +1010,7 @@ GameObject:
   - component: {fileID: 5662876879535256953}
   - component: {fileID: 4326398812767941018}
   - component: {fileID: 4430696907041490679}
+  - component: {fileID: 7400413128862379966}
   m_Layer: 5
   m_Name: MainMenuButton (1)
   m_TagString: Untagged
@@ -1212,3 +1241,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7400413128862379966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051290402289826894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da6f3c8dd4ddf40a6d054000683140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 836127869434340204}

@@ -1592,7 +1592,7 @@ TextureImporter:
         width: 133
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1601,6 +1601,28 @@ TextureImporter:
       bones: []
       spriteID: d99aa35b77b122f4fb1f4077dd89a603
       internalID: 1047756328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leave
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 343
+        width: 36
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad79ffb06c538a94b9c4bbe2fddf4c3a
+      internalID: -634264948
       vertices: []
       indices: 
       edges: []
@@ -1653,6 +1675,7 @@ TextureImporter:
       Japan6: 936332741
       Japan7: 2037436911
       Japan8: -2108062284
+      Leave: -634264948
       Menu: -1607368775
       MusicOff: -1205032490
       MusicOn: 198895075

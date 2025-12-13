@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 6100462972339568550}
   - component: {fileID: 6067750084266105986}
   m_Layer: 5
-  m_Name: Frog
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -627,8 +627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.2655, y: 0}
-  m_SizeDelta: {x: 281.0402, y: 270.1355}
+  m_AnchoredPosition: {x: 0.000026703, y: 0.000022888}
+  m_SizeDelta: {x: 280.7573, y: 236.3401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6100462972339568550
 CanvasRenderer:
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1702630849, guid: 1508bb7e95aba7247983c4727a01f96d, type: 3}
+  m_Sprite: {fileID: -1442562160, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

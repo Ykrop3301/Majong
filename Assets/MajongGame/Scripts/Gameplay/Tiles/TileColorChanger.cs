@@ -10,7 +10,7 @@ namespace MajongGame.Gameplay.Tiles
         private readonly Renderer _renderer;
         private readonly TileDTO _tile;
         private readonly Color _activeColor = Color.white;
-        private readonly Color _inactiveColor = Color.gray;
+        private readonly Color _inactiveColor = Color.gray * 0.9f;
         private readonly MonoBehaviour _coroutineRunner;
 
         private const float CHANGE_DURATION = 0.2f;
@@ -22,6 +22,7 @@ namespace MajongGame.Gameplay.Tiles
 
             Subscribe();
             _coroutineRunner = coroutineRunner;
+            _renderer.material.color = _inactiveColor;
         }
 
         private void Subscribe()

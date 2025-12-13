@@ -20,11 +20,13 @@ namespace MajongGame.Gameplay
         [SerializeField] private AudioSource _audioSource;
 
         private BoxCollider _boxCollider;
-        private Dictionary<Vector3, Tile> _tilesPoints = new Dictionary<Vector3, Tile>();
+        private Dictionary<Vector3, Tile> _tilesPointsTiles = new Dictionary<Vector3, Tile>();
         public int FreePointsCount { get; private set; }
         private Vector3 _tileSize;
         private PopupsHolder _popupsHolder;
         private int _movingTiles = 0;
+        private List<Vector3> _tilesPointsPositions;
+        private Vector3 _debugPoint;
 
         [Inject]
         private void Construct(PopupsHolder popupsHolder)
@@ -53,9 +55,12 @@ namespace MajongGame.Gameplay
                 Vector3 position = startPostion;
                 position.x += i * _tileSize.x;
 
-                _tilesPoints.Add(position, null);
-            }
+                if (position.x > -0.1 && position.x < 0.1f)
+                    position.x = 0;
 
+                _tilesPointsTiles.Add(position, null);
+            }
+            _tilesPointsPositions = _tilesPointsTiles.Keys.ToList();
             FreePointsCount = _tilesCount;
         }
 
@@ -69,30 +74,35 @@ namespace MajongGame.Gameplay
             {
                 GlobalVariablesController.CanClickTiles = false;
 
-                List<Vector3> sameTiles = _tilesPoints
-                    .Where(x => x.Value != null && x.Value.TileDTO.Sprite == tile.TileDTO.Sprite)
-                    .Select(x => x.Key)
+                List<Vector3> sameTilesPositions = _tilesPointsPositions
+                    .Where(x => _tilesPointsTiles[x] != null && _tilesPointsTiles[x].TileDTO.Sprite == tile.TileDTO.Sprite)
                     .ToList();
 
                 Vector3 newPoint;
 
-                if (sameTiles.Count > 0)
+                if (sameTilesPositions.Count > 0)
                 {
-                    Vector3 rightmostPoint = sameTiles.Last();
+                    Vector3 rightmostPoint = sameTilesPositions.Last();
 
-                    newPoint = rightmostPoint;
-                    newPoint.x += _tileSize.x;
+                    int pointIndex = _tilesPointsPositions.IndexOf(rightmostPoint);
+
+                    if (pointIndex + 1 > _tilesPointsPositions.Count)
+                    {
+                        Debug.Log(pointIndex);
+                    }
+
+                    newPoint = _tilesPointsTiles.Keys.ToList()[pointIndex + 1];
                 }
                 else
                 {
-                    newPoint = _tilesPoints
+                    newPoint = _tilesPointsTiles
                         .Where(x => x.Value == null)
                         .Select(x => x.Key)
                         .First();
                 }
 
-                if (!_tilesPoints.ContainsKey(newPoint))
-                    throw new System.Exception($"Error in calculating a new point {newPoint}");
+                _debugPoint = newPoint;
+                
 
                 FreePointsCount--;
                 MoveTile(tile, newPoint);
@@ -104,30 +114,30 @@ namespace MajongGame.Gameplay
 
         private void MoveTile(Tile tile, Vector3 point)
         {
-            if (!_tilesPoints.ContainsKey(point))
-                throw new System.Exception($"Point {point} not contains.");
-
             _movingTiles++;
 
-            if (_tilesPoints[point] != null)
+            if (_tilesPointsTiles[point] != null)
             {
-                Tile oldTile = _tilesPoints[point];
-                _tilesPoints[point] = tile;
+                Tile oldTile = _tilesPointsTiles[point];
+                _tilesPointsTiles[point] = tile;
 
-                MoveTile(oldTile, new Vector3(point.x + _tileSize.x, point.y, point.z));
+                int pointIndex = _tilesPointsPositions.IndexOf(point);
+                Vector3 newPoint = _tilesPointsPositions[pointIndex + 1];
+
+                MoveTile(oldTile, newPoint);
             }
-            else _tilesPoints[point] = tile;
+            else _tilesPointsTiles[point] = tile;
 
             _movingTiles--;
 
             if (_movingTiles == 0)
             {
-                foreach (Vector3 tilePoint in _tilesPoints.Keys)
+                foreach (Vector3 tilePoint in _tilesPointsPositions)
                 {
-                    if (_tilesPoints[tilePoint] == null)
+                    if (_tilesPointsTiles[tilePoint] == null)
                         continue;
 
-                    _tilesPoints[tilePoint].TileDTO.Transform.DOMove(tilePoint, _tileMovingDuration);
+                    _tilesPointsTiles[tilePoint].TileDTO.Transform.DOMove(tilePoint, _tileMovingDuration);
                 }
                 StartCoroutine(WaitAndCheckEmptyPointsCoroutine());
             }
@@ -143,26 +153,27 @@ namespace MajongGame.Gameplay
 
         private void CheckThreeTiles()
         {
-            List<Tile> sameTiles = new List<Tile>();
+            List<Vector3> sameTilesPositions = new List<Vector3>();
 
-            foreach (Tile tile in _tilesPoints.Values)
+            foreach (Vector3 point in _tilesPointsPositions)
             {
-                if (tile == null) continue;
+                if (_tilesPointsTiles[point] == null)
+                    continue;
 
-                if (sameTiles.Count > 0 && tile.TileDTO.Sprite == sameTiles.Last().TileDTO.Sprite)
+                if (sameTilesPositions.Count > 0 && _tilesPointsTiles[point].TileDTO.Sprite == _tilesPointsTiles[sameTilesPositions.Last()].TileDTO.Sprite)
                 {
-                    sameTiles.Add(tile);
+                    sameTilesPositions.Add(point);
 
-                    if (sameTiles.Count == 3)
+                    if (sameTilesPositions.Count == 3)
                     {
-                        StartCoroutine(KillTiles(sameTiles));
+                        StartCoroutine(KillTiles(sameTilesPositions));
                         return;
                     }
                 }
                 else
                 {
-                    sameTiles.Clear();
-                    sameTiles.Add(tile);
+                    sameTilesPositions.Clear();
+                    sameTilesPositions.Add(point);
                 }
             }
 
@@ -179,39 +190,41 @@ namespace MajongGame.Gameplay
             }
         }
 
-        private IEnumerator KillTiles(List<Tile> tiles)
+        private IEnumerator KillTiles(List<Vector3> tilesPositions)
         {
             _audioSource.Play();
 
-            Vector3 righterPoint = tiles.Last().TileDTO.Transform.position;
-            foreach (Tile tile in tiles)
+            Vector3 righterPoint = tilesPositions.Last();
+            foreach (Vector3 point in tilesPositions)
             {
-                _tilesPoints[tile.TileDTO.Transform.position] = null;
+                var tile = _tilesPointsTiles[point];
+                _tilesPointsTiles[point] = null;
 
                 tile.Die();
                 FreePointsCount++;
                 yield return new WaitForSeconds(0.1f);
             }
-            FillEmptyPoints(righterPoint);
+            FillEmptyPoints(tilesPositions);
         }
 
-        private void FillEmptyPoints(Vector3 righterPoint)
+        private void FillEmptyPoints(List<Vector3> emptyPoints)
         {
             List<Tile> tilesToMoveBack = new List<Tile>();
 
-            List<KeyValuePair<Vector3, Tile>> righterTiles = _tilesPoints
-                .Where(x => x.Key.x > righterPoint.x && x.Value != null)
+            List<Vector3> righterTilesPositions = _tilesPointsPositions
+                .Where(x => x.x > emptyPoints.Last().x && _tilesPointsTiles[x] != null)
                 .ToList();
 
-            foreach (KeyValuePair<Vector3, Tile> pair in righterTiles)
+            int tempPointIndex = _tilesPointsPositions.IndexOf(emptyPoints[0]);
+            foreach (Vector3 point in righterTilesPositions)
             {
-                _tilesPoints[pair.Key] = null;
+                Tile tile = _tilesPointsTiles[point];
+                _tilesPointsTiles[point] = null;
 
-                Vector3 pointToMove = pair.Key;
-                pointToMove.x -= 3 * _tileSize.x;
+                _tilesPointsTiles[_tilesPointsPositions[tempPointIndex]] = tile;
 
-                _tilesPoints[pointToMove] = pair.Value;
-                pair.Value.TileDTO.Transform.DOMove(pointToMove, _tileMovingDuration);
+                tile.TileDTO.Transform.DOMove(_tilesPointsPositions[tempPointIndex], _tileMovingDuration);
+                tempPointIndex++;
             }
 
             StartCoroutine(WaitTileMovingCoroutine());

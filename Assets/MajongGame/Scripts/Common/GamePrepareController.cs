@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace MajongGame.Common
 {

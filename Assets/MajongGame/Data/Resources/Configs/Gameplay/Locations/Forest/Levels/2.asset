@@ -12,42 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb96f63b04d22b4a81339d7c72b60a3, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  <FirstLeayerPattern>k__BackingField: '###PP###
+  <FirstLeayerPattern>k__BackingField: '########
+
+    ##PPPP##
+
+    #PPPPPP#
+
+    PPPPPPPP
 
     #PPPPPP#
 
     ###PP###
 
-    ########
-
     ###PP###
 
-    P##PP##P
-
-    P##PP##P
-
-    P#####PP'
+    PPPPPPPP'
   <SecondLeayerPattern>k__BackingField: '###P###
 
+    #PPPPP#
+
+    PPPPPPP
+
+    #PPPPP#
+
     ###P###
-
-    ###PPP#
-
-    ###P###
-
-    #PPP###
 
     ###P###
 
     PPPPPPP'
-  <ThirdLeayerPattern>k__BackingField: '######
+  <ThirdLeayerPattern>k__BackingField: '#PPPP#
 
-    #P##P#
-
-    ##PP##
+    PPPPPP
 
     #PPPP#
 
-    P#PP#P
+    ##PP##
 
-    P####P'
+    ##PP##
+
+    PPPPPP'

@@ -38,7 +38,8 @@ namespace MajongGame.Gameplay.Level
             int count = tilesCount / 3;
             for (int i = 0; i < count; i++)
             {
-                if (result.Count == tilesCount) break;
+                if (result.Count == tilesCount) 
+                    break;
                 if (i >= list.Count) i = 0;
 
                 result.Add(list[i]);

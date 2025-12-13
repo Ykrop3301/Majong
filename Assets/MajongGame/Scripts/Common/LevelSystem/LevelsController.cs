@@ -34,6 +34,10 @@ namespace MajongGame.Common.LevelSystem
                 PlayerPrefs.SetString("CurrentLocation", _locations.First().Name);
             }
 
+            var location = GetLocation(PlayerPrefs.GetString("CurrentLocation"));
+            int levelId = PlayerPrefs.GetInt("UnlockedLevelsCount" + location.Name);
+
+            CurrentLevel = (location, levelId);
         }
 
         public LevelLocationConfig GetLocation(string locationName)

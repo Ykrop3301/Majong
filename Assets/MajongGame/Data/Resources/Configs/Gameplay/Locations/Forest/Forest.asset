@@ -29,16 +29,8 @@ MonoBehaviour:
   <Reward>k__BackingField: 100
   <Cost>k__BackingField: 100
   _levels:
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
+  - {fileID: 11400000, guid: ff593419c45e01f4ab5e2c18674444b1, type: 2}
+  - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}
+  - {fileID: 11400000, guid: d07428a5be8318c45830fd2d66ccc055, type: 2}
+  - {fileID: 11400000, guid: 76654dd39d429f342ac90d33bf0e3a3c, type: 2}
+  - {fileID: 11400000, guid: 6030989d42aeadc4fb79c09ba1328d95, type: 2}

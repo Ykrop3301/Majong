@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
   m_Name: SweetWorld
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: SweetWorld
+  <Name>k__BackingField: "\u041C\u0438\u0440 \u0441\u043B\u0430\u0434\u043E\u0441\u0442\u0435\u0439"
   <Background>k__BackingField: {fileID: 21300000, guid: aca472f5cc65176448b9f0b69c0d5256, type: 3}
   <LocationImage>k__BackingField: {fileID: 21300000, guid: 5446de199e4e27a45bd2db21c14a9401, type: 3}
   <ParticleSprite>k__BackingField: {fileID: -755288944, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
@@ -29,5 +29,13 @@ MonoBehaviour:
   <Reward>k__BackingField: 100
   <Cost>k__BackingField: 100
   _levels:
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}
+  - {fileID: 11400000, guid: 8e229e69142b23748b8d049067d5e312, type: 2}
+  - {fileID: 11400000, guid: 9deed8900de4aaf4782fd938dbbb9b70, type: 2}
+  - {fileID: 11400000, guid: c57c02b52b5961e4a907823079687db2, type: 2}
+  - {fileID: 11400000, guid: f8be6b462240ae0429fbb9968749fec7, type: 2}
+  - {fileID: 11400000, guid: 5253f4963c9af1b47af4631d3e8b1d4f, type: 2}
+  - {fileID: 11400000, guid: 2553bde7e0b770b4f9d64d12379b39bd, type: 2}
+  - {fileID: 11400000, guid: b03c9ebc8b489f5429253754e63e2300, type: 2}
+  - {fileID: 11400000, guid: 9cb3efcd034e4e24ab897a91d46c2277, type: 2}
+  - {fileID: 11400000, guid: 4202d4c57651f774f82d2531c1e9436b, type: 2}
+  - {fileID: 11400000, guid: b93ca609ec54d9b42a8ea8c585d7c852, type: 2}

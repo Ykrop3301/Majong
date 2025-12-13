@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Forest
+  <Name>k__BackingField: "\u041B\u0435\u0441"
   <Background>k__BackingField: {fileID: 21300000, guid: 44a4f242449cec049b9736e1f76c9e2d, type: 3}
   <LocationImage>k__BackingField: {fileID: 21300000, guid: af3275e03d8da794bb8f9ec130a7da99, type: 3}
   <ParticleSprite>k__BackingField: {fileID: -634264948, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
@@ -34,3 +34,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d07428a5be8318c45830fd2d66ccc055, type: 2}
   - {fileID: 11400000, guid: 76654dd39d429f342ac90d33bf0e3a3c, type: 2}
   - {fileID: 11400000, guid: 6030989d42aeadc4fb79c09ba1328d95, type: 2}
+  - {fileID: 11400000, guid: e4adf963299e30e4aaabbb32e6146aae, type: 2}
+  - {fileID: 11400000, guid: 7a60926c7e7bade4f8fec83e8befe036, type: 2}
+  - {fileID: 11400000, guid: 08335b9301f0de04b97ec14a13f5fa13, type: 2}
+  - {fileID: 11400000, guid: c19ad5d635878f94ca8b05c308e3089b, type: 2}
+  - {fileID: 11400000, guid: 90655de70ac2f9e45aef25bbc1bfb3ef, type: 2}

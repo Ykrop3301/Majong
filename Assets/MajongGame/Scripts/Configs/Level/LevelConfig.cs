@@ -8,7 +8,7 @@ namespace MajongGame.Configs.Level
     {
         [field: SerializeField, TextArea(8, 10)] public string FirstLeayerPattern { get; private set; } = "########\n########\n########\n########\n########\n########\n########\n########";
         [field: SerializeField, TextArea(7, 10)] public string SecondLeayerPattern { get; private set; } = "#######\n#######\n#######\n#######\n#######\n#######\n#######";
-        [field: SerializeField, TextArea(6, 10)] public string ThirdLeayerPattern { get; private set; } = "######\n######\n######\n######\n######\n######";
+        [field: SerializeField, TextArea(8, 10)] public string ThirdLeayerPattern { get; private set; } = "########\n########\n########\n########\n########\n########\n########\n########";
         
         [SerializeField] private int _tilesCount;
         [SerializeField] private bool _isCorrect;

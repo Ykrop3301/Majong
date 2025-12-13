@@ -42,9 +42,11 @@ namespace MajongGame.Gameplay.Tiles
         private List<Tile> GetCoveringTiles()
         {
             Vector3 center = _tile.Transform.TransformPoint(_boxCollider.center);
-            Vector3 boxCenter = center + Vector3.up * (_boxCollider.size.y / 2);
+            Vector3 boxCenter = center + Vector3.up * (_boxCollider.size.y);
+            Vector3 castBoxSize = _boxCollider.size / 2.25f;
+            castBoxSize.y *= 3f;
 
-            List<Tile> hits = Physics.OverlapBox(boxCenter, _boxCollider.size / 2.25f)
+            List<Tile> hits = Physics.OverlapBox(boxCenter, castBoxSize)
                 .Where(x => x.TryGetComponent(out Tile tile) && tile != _originTile)
                 .Select(x => x.GetComponent<Tile>())
                 .ToList();

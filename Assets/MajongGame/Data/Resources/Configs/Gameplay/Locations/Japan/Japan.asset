@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedfba709024de44295852a8b71ed67e, type: 3}
   m_Name: Japan
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Japan
+  <Name>k__BackingField: "\u042F\u043F\u043E\u043D\u0438\u044F"
   <Background>k__BackingField: {fileID: 21300000, guid: 6e9bab324edb3bf4d88ebc239dc07a48, type: 3}
   <LocationImage>k__BackingField: {fileID: 21300000, guid: ade2b2731dd28714d8608925434e60fa, type: 3}
   <ParticleSprite>k__BackingField: {fileID: 295349152, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
@@ -29,5 +29,13 @@ MonoBehaviour:
   <Reward>k__BackingField: 100
   <Cost>k__BackingField: 100
   _levels:
-  - {fileID: 11400000, guid: 763db8e6756afe84792898f5c86fda87, type: 2}
-  - {fileID: 11400000, guid: 7235a1e145da8204bba0d074a2527066, type: 2}
+  - {fileID: 11400000, guid: c26198136d60d2d49a0bae161c430f7e, type: 2}
+  - {fileID: 11400000, guid: 9f3ed960fe219394fbb541cedc5c50cc, type: 2}
+  - {fileID: 11400000, guid: 43bf68a6e5f7b05469a9897bd7920d32, type: 2}
+  - {fileID: 11400000, guid: 45a6103db7eeb834083f60124e59eb59, type: 2}
+  - {fileID: 11400000, guid: e7123c32aa53c3543831d62df087ee5f, type: 2}
+  - {fileID: 11400000, guid: 18d27a5496e949c4eb9f58b604b07927, type: 2}
+  - {fileID: 11400000, guid: e4f34da1fa2ca5d42acd6cb37be6083a, type: 2}
+  - {fileID: 11400000, guid: 0068ca3871a082b49a9339d5b4805b23, type: 2}
+  - {fileID: 11400000, guid: 51885f58d2f13eb4ea39d16b0ea7819f, type: 2}
+  - {fileID: 11400000, guid: f49c15260a8effb48a6c1cb505f5d0c3, type: 2}

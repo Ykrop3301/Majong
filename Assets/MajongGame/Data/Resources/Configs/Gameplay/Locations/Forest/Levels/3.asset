@@ -40,16 +40,20 @@ MonoBehaviour:
     ##PPP##
 
     ###P###'
-  <ThirdLeayerPattern>k__BackingField: '##PP##
+  <ThirdLeayerPattern>k__BackingField: '##PPPP##
 
-    #PPPP#
+    #PPPPPP#
 
-    PPPPPP
+    PPPPPPPP
 
-    PPPPPP
+    PPP##PPP
 
-    #PPPP#
+    PPP##PPP
 
-    ##PP##'
-  _tilesCount: 96
+    #PPPPPP#
+
+    ##PPPP##
+
+    ###PP###'
+  _tilesCount: 114
   _isCorrect: 1

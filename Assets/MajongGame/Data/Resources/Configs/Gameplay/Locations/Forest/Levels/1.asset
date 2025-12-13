@@ -27,27 +27,29 @@ MonoBehaviour:
     ########
 
     ########'
-  <SecondLeayerPattern>k__BackingField: '#######
+  <SecondLeayerPattern>k__BackingField: '###P###
 
     ###P###
 
     ##PPP##
 
-    #PPPPP#
+    PPPPPPP
 
     ##PPP##
 
     ###P###
 
-    #######'
+    ###P###'
   <ThirdLeayerPattern>k__BackingField: '######
 
     #PPPP#
 
-    #PPPP#
+    #P##P#
 
-    #PPPP#
+    #P##P#
 
     #PPPP#
 
     ######'
+  _tilesCount: 33
+  _isCorrect: 1

@@ -3,7 +3,6 @@ using MajongGame.Configs.Level;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 namespace MajongGame.MainMenu.Locations
 {
@@ -24,11 +23,20 @@ namespace MajongGame.MainMenu.Locations
 
         private void Start()
         {
-            LevelLocationConfig currentLocation = _locations
+            LevelLocationConfig currentLocation;
+            if (!PlayerPrefs.HasKey("CurrentLocation"))
+            {
+                currentLocation = _locations
                 .Where(x => x.Name == PlayerPrefs.GetString("UnlockedLocations").Split(',').Last())
                 .First();
 
-            PlayerPrefs.SetString("CurrentLocation", currentLocation.Name);
+                PlayerPrefs.SetString("CurrentLocation", currentLocation.Name);
+            }
+            else
+            {
+                currentLocation = _locations.Where(x => x.Name == PlayerPrefs.GetString("CurrentLocation")).First();
+            }
+
             _currentLocation.SetLocation(currentLocation);
             _currentLocation.Transform.position = _centerPoint.position;
 
@@ -72,14 +80,13 @@ namespace MajongGame.MainMenu.Locations
 
         private void SetCurrentLocation(LevelLocationConfig location)
         {
-            string[] unlocedLocations = PlayerPrefs.GetString("UnlockedLocations").Split(',');
-            
+            string[] unlockedLocations = PlayerPrefs.GetString("UnlockedLocations").Split(',');
 
             _particleSystem.Clear();
             _particleSystem.textureSheetAnimation.SetSprite(0, location.ParticleSprite);
             _particleSystem.Play();
 
-            foreach (string locationString in unlocedLocations)
+            foreach (string locationString in unlockedLocations)
                 if (locationString == location.Name)
                 {
                     PlayerPrefs.SetString("CurrentLocation", location.Name);

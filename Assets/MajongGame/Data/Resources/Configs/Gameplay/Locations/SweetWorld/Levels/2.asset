@@ -12,42 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb96f63b04d22b4a81339d7c72b60a3, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  <FirstLeayerPattern>k__BackingField: '###PP###
+  <FirstLeayerPattern>k__BackingField: '#####PP#
+
+    ###P##PP
+
+    ##PPPP#P
 
     #PPPPPP#
 
-    ###PP###
+    #PPPPPP#
 
-    ########
+    P#PPPP##
 
-    ###PP###
+    PP#PP###
 
-    P##PP##P
+    #PP#####'
+  <SecondLeayerPattern>k__BackingField: '#######
 
-    P##PP##P
+    #######
 
-    P#####PP'
-  <SecondLeayerPattern>k__BackingField: '###P###
+    #######
 
-    ###P###
+    ##PPP##
 
-    ###PPP#
+    ##PPP##
 
-    ###P###
+    #######
 
-    #PPP###
+    #######'
+  <ThirdLeayerPattern>k__BackingField: '#####PP#
 
-    ###P###
+    ###P##PP
 
-    PPPPPPP'
-  <ThirdLeayerPattern>k__BackingField: '######
+    ##PPPP#P
 
-    #P##P#
+    #PPPPPP#
 
-    ##PP##
+    #PPPPPP#
 
-    #PPPP#
+    P#PPPP##
 
-    P#PP#P
+    PP#PP###
 
-    P####P'
+    #PP#####'
+  _tilesCount: 72
+  _isCorrect: 1

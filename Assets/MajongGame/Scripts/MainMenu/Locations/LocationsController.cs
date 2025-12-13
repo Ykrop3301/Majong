@@ -19,6 +19,7 @@ namespace MajongGame.MainMenu.Locations
 
         [SerializeField] private LocationHolder _currentLocation;
         [SerializeField] private LocationHolder _futureLocation;
+        [SerializeField] private LocationProgressBarController _progressBarController;
         [SerializeField] private float _moveDuration = 0.4f;
 
         private void Start()
@@ -34,6 +35,9 @@ namespace MajongGame.MainMenu.Locations
             _particleSystem.Stop();
             _particleSystem.textureSheetAnimation.SetSprite(0, currentLocation.ParticleSprite);
             _particleSystem.Play();
+
+            _progressBarController.gameObject.SetActive(true);
+            _progressBarController.SetLocation(currentLocation);
         }
 
         public void ShowNextLocation()
@@ -69,6 +73,7 @@ namespace MajongGame.MainMenu.Locations
         private void SetCurrentLocation(LevelLocationConfig location)
         {
             string[] unlocedLocations = PlayerPrefs.GetString("UnlockedLocations").Split(',');
+            
 
             _particleSystem.Clear();
             _particleSystem.textureSheetAnimation.SetSprite(0, location.ParticleSprite);
@@ -79,11 +84,15 @@ namespace MajongGame.MainMenu.Locations
                 {
                     PlayerPrefs.SetString("CurrentLocation", location.Name);
                     _playButtonController.SetActive(true);
+
+                    _progressBarController.gameObject.SetActive(true);
+                    _progressBarController.SetLocation(location);
                     return;
                 }
 
             _playButtonController.SetActive(false);
             _playButtonController.SetBuyingLocaion(location);
+            _progressBarController.gameObject.SetActive(false);
         }
     }
 }

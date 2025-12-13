@@ -1790,7 +1790,7 @@ TextureImporter:
         width: 184
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1812,7 +1812,7 @@ TextureImporter:
         width: 177
         height: 149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1821,6 +1821,50 @@ TextureImporter:
       bones: []
       spriteID: d49f956b1b99e894ca2407b04d4d9a00
       internalID: -1442562160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProgressBar
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 63
+        width: 166
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a752390ad4e5c9f42a824ff672e8dacc
+      internalID: -488360006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProgressBarBG
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 8
+        width: 190
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 24, z: 30, w: 23}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe543800748726b4cbc4b19037a72287
+      internalID: 1828925563
       vertices: []
       indices: 
       edges: []
@@ -1892,6 +1936,8 @@ TextureImporter:
       Ocean7: 134247858
       Ocean8: 1240376290
       OceanStar: -56794791
+      ProgressBar: -488360006
+      ProgressBarBG: 1828925563
       Pumpkin: 1230918939
       Restart: 1047756328
       Robot: 979684014

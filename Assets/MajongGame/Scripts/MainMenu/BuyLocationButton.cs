@@ -1,6 +1,7 @@
 ﻿using MajongGame.Common.PopupSystem;
 using MajongGame.Common.PopupSystem.PopupVariants;
 using MajongGame.Configs.Level;
+using MajongGame.MainMenu.Locations;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,7 @@ namespace MajongGame.MainMenu
     {
         [SerializeField] private TMP_Text _costTextField;
         [SerializeField] private PlayButtonController _playButtonController;
+        [SerializeField] private LocationProgressBarController _barController;
 
         private PopupsHolder _popupsHolder;
         private LevelLocationConfig _locationConfig;
@@ -51,6 +53,8 @@ namespace MajongGame.MainMenu
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - _locationConfig.Cost);
             PlayerPrefs.SetString("CurrentLocation", _locationConfig.Name);
             _playButtonController.SetActive(true);
+            _barController.gameObject.SetActive(true);
+            _barController.SetLocation(_locationConfig);
         }
     }
 }

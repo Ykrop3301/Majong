@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Configs
+  m_EditorClassIdentifier: 
+  m_GroupName: Configs
+  m_GUID: 70bded7e2d2df7c4da5f240085ebefb4
+  m_SerializeEntries:
+  - m_GUID: cc6fdc8dd52e3244d883aca3bce73520
+    m_Address: Locations/Forest.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Locations
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d926d4696d1f71a40a95920afb9f8c39
+    m_Address: Locations/Ocean.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Locations
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b6cfa47f774e90b4e8324f9480e2ee5a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e76906b025370d342b0bdb50b8236889, type: 2}
+    - {fileID: 11400000, guid: 065653ec307c10b49b6763176d252161, type: 2}

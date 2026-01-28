@@ -1,0 +1,31 @@
+{
+    "stringKeys": [
+        "CurrentLocation"
+    ],
+    "stringValues": [
+        "Лес"
+    ],
+    "floatKeys": [
+        "SFXVolume",
+        "MusicVolume"
+    ],
+    "floatValues": [
+        1.0,
+        0.0
+    ],
+    "intKeys": [
+        "FirstLoadCompleted"
+    ],
+    "intValues": [
+        1
+    ],
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 210
+}

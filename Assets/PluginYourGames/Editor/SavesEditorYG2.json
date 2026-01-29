@@ -3,15 +3,15 @@
         "CurrentLocation"
     ],
     "stringValues": [
-        "Лес"
+        "Океан"
     ],
     "floatKeys": [
         "SFXVolume",
         "MusicVolume"
     ],
     "floatValues": [
-        1.0,
-        0.0
+        0.37109053134918215,
+        0.6236616373062134
     ],
     "intKeys": [
         "FirstLoadCompleted"
@@ -27,5 +27,5 @@
         false,
         false
     ],
-    "idSave": 253
+    "idSave": 285
 }

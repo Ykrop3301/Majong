@@ -27,7 +27,7 @@
 
 # Visual Studio cache directory
 .vs/
-
+/[Aa]ssets/PluginYourGames/Editor/SavesEditorYG2.json
 # Gradle cache directory
 .gradle/
 

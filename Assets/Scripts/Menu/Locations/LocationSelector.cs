@@ -23,6 +23,8 @@ namespace GameTemplate.Menu
         [SerializeField] private LocationHolder _currentLocation;
         [SerializeField] private LocationHolder _futureLocation;
 
+        [SerializeField] private ParticleSystem _particleSystem;
+
         private ISaveService _saveService;
         private IAssetsProvider _assetsProvider;
         private List<LocationConfig> _locations;
@@ -57,6 +59,10 @@ namespace GameTemplate.Menu
 
             (_currentLocation, _futureLocation) = (_futureLocation, _currentLocation);
 
+            _particleSystem.Stop();
+            _particleSystem.textureSheetAnimation.SetSprite(0, selectedLocation.ParticlesImage);
+            _particleSystem.Play();
+
             _saveService.SetString("CurrentLocation", selectedLocation.Id);
         }
 
@@ -78,6 +84,10 @@ namespace GameTemplate.Menu
 
             LocationConfig currentLocationConfig = _locations.Where(x => x.Id == _saveService.GetString("CurrentLocation")).First();
             _currentLocation.SetLocation(currentLocationConfig);
+
+            _particleSystem.transform.SetParent(Camera.main.transform);
+            _particleSystem.textureSheetAnimation.SetSprite(0, currentLocationConfig.ParticlesImage);
+
             await UniTask.CompletedTask;
         }
     }

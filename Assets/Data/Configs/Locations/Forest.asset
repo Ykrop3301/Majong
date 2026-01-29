@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Id>k__BackingField: "\u041B\u0435\u0441"
   <Index>k__BackingField: 0
-  <Icon>k__BackingField: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: af3275e03d8da794bb8f9ec130a7da99, type: 3}
+  <ParticlesImage>k__BackingField: {fileID: -634264948, guid: 2cd3206e941081d43bab9f0cea8d5cb1, type: 3}
   <Levels>k__BackingField:
   - {fileID: 11400000, guid: e5a570c838cea3247a68ed24431efdf1, type: 2}
   - {fileID: 11400000, guid: 1fca6ed589640114fbdef87ebc9533a8, type: 2}

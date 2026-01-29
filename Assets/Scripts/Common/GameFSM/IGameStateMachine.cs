@@ -1,7 +1,9 @@
-﻿namespace Common.GameFSM
+﻿using Cysharp.Threading.Tasks;
+
+namespace Common.GameFSM
 {
     public interface IGameStateMachine
     {
-        public void Enter<T>() where T: IGameState;
+        public UniTask Enter<T>() where T: IGameState;
     }
 }

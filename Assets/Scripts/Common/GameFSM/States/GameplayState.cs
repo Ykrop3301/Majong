@@ -1,23 +1,24 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Common.Curtain;
+using Cysharp.Threading.Tasks;
 
 namespace Common.GameFSM
 {
     public class GameplayState : IGameState
     {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ICurtain _curtain;
 
-        public GameplayState(IGameStateMachine gameStateMachine)
+        public GameplayState(ICurtain curtain)
         {
-            _gameStateMachine = gameStateMachine;
+            _curtain = curtain;
         }
-        public UniTask Enter()
+        public async UniTask Enter()
         {
-            throw new System.NotImplementedException();
+            await _curtain.Hide();
         }
 
-        public UniTask OnExit()
+        public async UniTask OnExit()
         {
-            throw new System.NotImplementedException();
+            await _curtain.Show();
         }
     }
 }

@@ -10,8 +10,8 @@
         "MusicVolume"
     ],
     "floatValues": [
-        0.37109053134918215,
-        0.6236616373062134
+        0.5899387001991272,
+        0.3001468777656555
     ],
     "intKeys": [
         "FirstLoadCompleted"
@@ -27,5 +27,5 @@
         false,
         false
     ],
-    "idSave": 285
+    "idSave": 294
 }

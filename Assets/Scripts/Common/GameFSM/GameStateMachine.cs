@@ -2,6 +2,7 @@
 using Common.Curtain;
 using Common.Save;
 using Common.Settings;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Common.GameFSM
@@ -17,15 +18,18 @@ namespace Common.GameFSM
             {
                 { typeof(BootstrapState), new BootstrapState(this, saveService, settingsService) },
                 { typeof(MenuState), new MenuState(curtain, assetsProvider) },
-                { typeof(GameplayState), new GameplayState(this) },
+                { typeof(GameplayState), new GameplayState(curtain) },
             };
         }
 
-        public void Enter<T>() where T : IGameState
+        public async UniTask Enter<T>() where T : IGameState
         {
-            _currentState?.OnExit();
+            if (_currentState != null)
+                await _currentState.OnExit();
+
             _currentState = _states[typeof(T)];
-            _currentState.Enter();
+
+            _currentState.Enter().Forget();
         }
     }
 }

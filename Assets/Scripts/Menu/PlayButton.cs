@@ -1,11 +1,25 @@
-﻿using UnityEngine;
+﻿using Common.GameFSM;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace GameTemplate.Menu
 {
     public class PlayButton: MonoBehaviour
     {
-        public void Play()
-            => SceneManager.LoadScene("GameplayScene");
+        private IGameStateMachine _gameStateMachine;
+
+        [Inject]
+        private void Construct(IGameStateMachine gameStateMachine)
+        {
+            _gameStateMachine = gameStateMachine;
+        }
+
+        public async void Play()
+        {
+            await _gameStateMachine.Enter<GameplayState>();
+
+            SceneManager.LoadScene("GameplayScene");
+        }
     }
 }

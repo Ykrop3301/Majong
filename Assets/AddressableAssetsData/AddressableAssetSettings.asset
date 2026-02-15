@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 70bded7e2d2df7c4da5f240085ebefb4
   m_currentHash:
     serializedVersion: 2
-    Hash: 5f326995ac5a0b23c089cacb28e6e641
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 3deba73da1215a44891bc27110b99446, type: 2}
   - {fileID: 11400000, guid: 1218d46006a8ccd4390ad741b0c1e090, type: 2}
   - {fileID: 11400000, guid: f09b843d9054ae4418eb3942b2a1870c, type: 2}
   m_BuildSettings:
@@ -103,6 +104,7 @@ MonoBehaviour:
     - default
     - MenuUI
     - Locations
+    - Gameplay
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a5377a483479d6f4894a0e049f5ba445, type: 2}

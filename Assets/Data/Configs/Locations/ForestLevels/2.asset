@@ -13,3 +13,48 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 2
+  <FirstLeayerPattern>k__BackingField: '########
+
+    ########
+
+    PPPPPPPP
+
+    ########
+
+    ###PP###
+
+    ########
+
+    ########
+
+    PPPPPPPP'
+  <SecondLeayerPattern>k__BackingField: '#######
+
+    #######
+
+    #######
+
+    #######
+
+    #######
+
+    #######
+
+    #######'
+  <ThirdLeayerPattern>k__BackingField: '########
+
+    ########
+
+    ########
+
+    ########
+
+    ########
+
+    ########
+
+    ########
+
+    ########'
+  _tilesCount: 18
+  _isCorrect: 1

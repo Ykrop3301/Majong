@@ -18,7 +18,7 @@ namespace Common.GameFSM
             {
                 { typeof(BootstrapState), new BootstrapState(this, saveService, settingsService) },
                 { typeof(MenuState), new MenuState(curtain, assetsProvider) },
-                { typeof(GameplayState), new GameplayState(curtain) },
+                { typeof(GameplayState), new GameplayState(curtain, assetsProvider, saveService) },
             };
         }
 

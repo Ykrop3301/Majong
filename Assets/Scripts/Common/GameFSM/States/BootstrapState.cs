@@ -25,7 +25,7 @@ namespace Common.GameFSM
 
             await SceneManager.LoadSceneAsync("MenuScene").ToUniTask();
 
-            _gameStateMachine.Enter<MenuState>();
+            _gameStateMachine.Enter<MenuState>().Forget();
         }
 
         public async UniTask OnExit()
@@ -36,6 +36,7 @@ namespace Common.GameFSM
         private void OnFirstLoad()
         {
             _saveService.SetInt("FirstLoadCompleted", 1);
+            _saveService.SetString("CurrentTilePrefabName", "DefaultTile");
 
             _settingsService.SetMusicVolume(1);
             _settingsService.SetSFXVolume(1);

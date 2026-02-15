@@ -1,23 +1,29 @@
 {
     "stringKeys": [
+        "CurrentTilePrefabName",
         "CurrentLocation"
     ],
     "stringValues": [
-        "Океан"
+        "DefaultTile",
+        "Ocean"
     ],
     "floatKeys": [
-        "SFXVolume",
-        "MusicVolume"
+        "MusicVolume",
+        "SFXVolume"
     ],
     "floatValues": [
-        0.5899387001991272,
-        0.3001468777656555
+        0.5159502029418945,
+        0.3121993839740753
     ],
     "intKeys": [
-        "FirstLoadCompleted"
+        "FirstLoadCompleted",
+        "Forest.Current",
+        "Ocean.Current"
     ],
     "intValues": [
-        1
+        1,
+        0,
+        0
     ],
     "intExample": 5,
     "strExample": "Hello!",
@@ -27,5 +33,5 @@
         false,
         false
     ],
-    "idSave": 294
+    "idSave": 60
 }
